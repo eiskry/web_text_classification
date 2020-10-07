@@ -1,2 +1,2 @@
-# web_text_analysis
-Web文書解析
+# web_text_classficaton
+Web文書分類
