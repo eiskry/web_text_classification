@@ -1,0 +1,10 @@
+import subprocess
+
+path = 'sample.txt'
+
+f = open(path)
+
+print(type(f))
+
+f.close()
+    
