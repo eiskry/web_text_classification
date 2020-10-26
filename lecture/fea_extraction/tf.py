@@ -16,16 +16,26 @@ def mecab_analysis(text):
             break
     return output
 
-def count_csv():
-    text = str(open("sample1.txt", "r", encoding = "utf-8").read())
-    words = mecab_analysis(text)
-    counter = Counter(words)
-    for word, count in counter.most_common():
-        if len(word) > 0:
-            print("%s:%d  "%(word, count), end = "")
+
+def tf():
+    text = open("train.mp3player.txt", "r", encoding = "utf-8")
+    while True:
+        line = text.readline()
+        if line:
+            # print(line)
+            words = mecab_analysis(line)
+            counter = Counter(words)
+            for word, count in counter.most_common():
+                if len(word) > 0:
+                    print("%s:%d  "%(word, count),end ="")
+            print("")
+            print("")
+        else:
+            break
+       
 
 def main():
-    count_csv()
+    tf()
 
 if __name__ == '__main__':
     main()
