@@ -16,9 +16,11 @@ def mecab_analysis(text):
             break
     return output
 
+text1 = open("train.cleaner.txt", "r", encoding = "utf-8")
+text2 = open("train.mp3player.txt", "r", encoding = "utf-8")
+text3 = open("test.txt", "r", encoding = "utf-8")
 
-def tf():
-    text = open("train.mp3player.txt", "r", encoding = "utf-8")
+def tf(text):
     while True:
         line = text.readline()
         if line:
@@ -35,7 +37,7 @@ def tf():
        
 
 def main():
-    tf()
+    tf(text3)
 
 if __name__ == '__main__':
     main()

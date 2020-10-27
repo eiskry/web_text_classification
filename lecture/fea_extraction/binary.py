@@ -16,8 +16,11 @@ def mecab_analysis(text):
             break
     return output
 
-def binary():
-    text = open("test.txt", "r", encoding = "utf-8")
+text1 = open("train.cleaner.txt", "r", encoding = "utf-8")
+text2 = open("train.mp3player.txt", "r", encoding = "utf-8")
+text3 = open("test.txt", "r", encoding = "utf-8")
+
+def binary(text):
     while True:
         line = text.readline()
         if line:
@@ -33,25 +36,9 @@ def binary():
         else:
             break
 
-# def binary():
-#     text = open("train.cleaner.txt", "r", encoding = "utf-8")
-#     while True:
-#         line = text.readline()
-#         if line:
-#             # print(line)
-#             words = mecab_analysis(line)
-#             counter = Counter(words)
-#             for word, count in counter.most_common():
-#                 if len(word) > 0:
-#                     print("%s:1  "%word,end ="")
-#             print("")
-#             print("")
-#         else:
-#             break
-
 
 def main():
-    binary()
+    binary(text3)
 
 if __name__ == '__main__':
     main()
