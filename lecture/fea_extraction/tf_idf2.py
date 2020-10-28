@@ -44,7 +44,8 @@ def tf_idf2(text):
                     i = i + 1
             for word, count in counter.most_common():
                 if len(word) > 0:
-                    tf = math.log10(count+1) / math.log10(i)
+                    # tf = math.log10(count+1) / math.log10(i)
+                    tf = 1 + math.log10(count)
                     wei = tf * idf(word)
                     print("%s:%f  "%(word, wei),end ="")
             print("")
@@ -54,7 +55,7 @@ def tf_idf2(text):
        
 
 def main():
-    tf_idf2(text1)
+    tf_idf2(text3)
 
 if __name__ == '__main__':
     main()
