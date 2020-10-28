@@ -26,20 +26,26 @@ def idf(word):
     idf_value = math.log10(value) + 1
     return idf_value
 
+
 text1 = open("train.cleaner.txt", "r", encoding = "utf-8")
 text2 = open("train.mp3player.txt", "r", encoding = "utf-8")
 text3 = open("test.txt", "r", encoding = "utf-8")
 
-def tf_idf(text):
+def tf_idf2(text):
     while True:
         line = text.readline()
         if line:
             # print(line)
             words = mecab_analysis(line)
             counter = Counter(words)
+            i = 0
             for word, count in counter.most_common():
                 if len(word) > 0:
-                    wei = count * idf(word)
+                    i = i + 1
+            for word, count in counter.most_common():
+                if len(word) > 0:
+                    tf = math.log10(count+1) / math.log10(i)
+                    wei = tf * idf(word)
                     print("%s:%f  "%(word, wei),end ="")
             print("")
             print("")
@@ -48,7 +54,7 @@ def tf_idf(text):
        
 
 def main():
-    tf_idf(text3)
+    tf_idf2(text1)
 
 if __name__ == '__main__':
     main()
