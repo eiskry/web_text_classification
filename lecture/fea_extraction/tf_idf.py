@@ -1,6 +1,7 @@
 import MeCab as mc
 from collections import Counter
 import pandas as pd
+import csv
 import math
 
 def mecab_analysis(text):
@@ -23,8 +24,28 @@ def idf(word):
     df2 = df[df["word"] == word]
     df_value = df2.iloc[0]['count']
     value = 1000/df_value
-    idf_value = math.log10(value) + 1
+    idf_value = math.log(value) + 1
     return idf_value
+
+
+def text_csv_converter(datas): # datasはテキストファイルの場所
+   # 保存するCSVファイルの場所
+   file_csv = datas.replace("txt", "csv")
+   
+   # テキストファイルを開く
+   with open(datas)as rf:
+       # 書き込むＣＳＶファイルを開く
+       with open(file_csv, "w")as wf:
+           # テキストを１行ずつ読み込む
+           # テキストの１行を要素としたlistになる
+           readfile = rf.readlines()
+           
+           for read_text in readfile:
+               # listに分割
+               read_text = read_text.split()
+               # csvに書き込む
+               writer = csv.writer(wf, delimiter=',')
+               writer.writerow(read_text)
 
 text1 = open("train.cleaner.txt", "r", encoding = "utf-8")
 text2 = open("train.mp3player.txt", "r", encoding = "utf-8")
@@ -48,7 +69,8 @@ def tf_idf(text):
        
 
 def main():
-    tf_idf(text3)
+    text_csv_converter("uniq_sort.txt")
+    tf_idf(text1)
 
 if __name__ == '__main__':
     main()

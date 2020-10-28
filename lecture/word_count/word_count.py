@@ -16,8 +16,9 @@ def mecab_analysis(text):
             break
     return output
 
-def count_csv():
-    text = str(open("sample1.txt", "r", encoding = "utf-8").read())
+text1 = open("train.cleaner.txt", "r", encoding = "utf-8")
+
+def count(text):
     words = mecab_analysis(text)
     counter = Counter(words)
     for word, count in counter.most_common():
@@ -25,7 +26,7 @@ def count_csv():
             print("%s:%d  "%(word, count), end = "")
 
 def main():
-    count_csv()
+    count(text1)
 
 if __name__ == '__main__':
     main()

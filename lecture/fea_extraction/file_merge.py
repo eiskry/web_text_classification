@@ -37,24 +37,6 @@ def merge(text):
         else:
             break
 
-def text_csv_converter(datas): # datasはテキストファイルの場所
-   # 保存するCSVファイルの場所
-   file_csv = datas.replace("txt", "csv")
-   
-   # テキストファイルを開く
-   with open(datas)as rf:
-       # 書き込むＣＳＶファイルを開く
-       with open(file_csv, "w")as wf:
-           # テキストを１行ずつ読み込む
-           # テキストの１行を要素としたlistになる
-           readfile = rf.readlines()
-           
-           for read_text in readfile:
-               # listに分割
-               read_text = read_text.split()
-               # csvに書き込む
-               writer = csv.writer(wf, delimiter=',')
-               writer.writerow(read_text)
 
 
 # def count_csv(text_):
@@ -68,7 +50,7 @@ def main():
     b1 = merge(text1)
     b2 = merge(text2)
     b3 = merge(text3)
-    text_csv_converter('uniq_sort.txt')
+    # text_csv_converter('uniq_sort.txt')
 
 
 if __name__ == '__main__':
