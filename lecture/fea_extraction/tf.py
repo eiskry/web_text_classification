@@ -31,7 +31,7 @@ def tf(text):
                 if len(word) > 0:
                     print("%s:%d  "%(word, count),end ="")
             print("")
-            print("")
+            # print("")
         else:
             break
        
