@@ -33,8 +33,8 @@ def str_dic(x):
 
 # 文書のベクトルを読み込み、クラスラベルを付与する
 def read_vec(x, label):
-    x_ = str_dic(x)
-    x_vector = Vec(d2, label)
+    # x_ = str_dic(x)
+    x_vector = Vec(x, label)
     return x_vector
 
 # 入力文書のベクトルを読み込む
@@ -83,7 +83,7 @@ for x in sys.stdin:
     # 教師文書の辞書のキーについて計算
     for id in space.keys():
         # 教師文書のベクトル
-        v = space[id]
+        v = space[id].x
         s[id] = sim( input, v )
 
     # 近傍文書の獲得
