@@ -67,7 +67,7 @@ space_train_file = {}
 for line in open('train.cleaner.txt', 'r'):
     space_train_file[tid] = line
     tid += 1
-print(tid)
+# print(tid)
 
 with open('each_file_count.txt', 'w') as f2:
     for id in space_train_file.keys():
@@ -96,42 +96,38 @@ for line in open('each_file_count.txt', 'r'):
     space_train_file_dic[tid] = x
     tid += 1
 # print(tid)
-print(space_train_file_dic[5]['。'])
+# print(space_train_file_dic[5]['。'])
 
 
 # ----- ----- ----- ----- ----- # tfidfの計算
-for id in space_train_file_dic.keys:
+for id in space_train_file_dic.keys():
     dic_temp = space_train_file_dic[id]
 
-    for id2 in space_train_file_dic[id].keys:
+    for id2 in space_train_file_dic[id].keys():
         df_value =  word_count[id2]
-        idf_value = math.exp( N / df_value ) +1
+        idf_value = math.exp( N / df_value ) + 1
         tf_value= space_train_file_dic[id][id2]
         space_train_file_dic[id][id2] = tf_value * idf_value
+# print(space_train_file_dic[5]['。'])
 
+# ----- ----- ----- ----- ----- # 結果の出力
 
+with open('result.txt', 'w') as f3:
+    for id in space_train_file_dic.keys():
+        dic = space_train_file_dic[id]
+        line_ = str(dic)
+        line = line_.replace('{', '').replace('\'', '').replace(', ', ' ').replace(': ', ':').replace('}', '')
+        print(line, file = f3)
+        # print("", file = f3)
+        
 
+# for line in open('pre_result.txt', 'r'):
+#     line_ = line.replace('{', '').replace('\'', '').replace(', ', ' ').replace(': ', ':').replace('}', '')
+#     with open('result.txt', 'w') as f4:
+#         print(line_, file = f4)
+    # print(line_)
 
-
-
-
-# tid = 0
-# space2 = {}
-# for line in open('all_file_count.txt', 'r'):
-#     x = str_dic(line)
-#     space2[tid] = x
-#     tid += 1
-
-# # for id in space2.keys():
-# #     for id2 in 
-
-# print(space2[27])
-
-
-
-# def main():
-#     print(space2)
-
-# if __name__ == '__main__':
-#     main()
-    
+# for line in open('pre_result.txt', 'r'):
+#     with open('result.txt', 'w') as f4:
+#         print(line, file = f4)
+#     # print(line_)
