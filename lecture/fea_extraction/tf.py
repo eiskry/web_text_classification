@@ -37,7 +37,7 @@ def tf(text):
        
 
 def main():
-    tf(text3)
+    tf(text1)
 
 if __name__ == '__main__':
     main()
