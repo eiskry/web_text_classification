@@ -28,8 +28,10 @@ def tf(text):
             words = mecab_analysis(line)
             counter = Counter(words)
             for word, count in counter.most_common():
-                if len(word) > 0:
+                if len(word) > 1:
                     print("%s:%d "%(word, count),end ="")
+                elif len(word) > 1:
+                    print("%s:%d "%(word, count))
             print("")
             # print("")
         else:

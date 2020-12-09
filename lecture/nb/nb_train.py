@@ -54,14 +54,25 @@ def sim(x1, x2):
     
 
 # ----- ----- ----- ----- ----- # 教師文書の読み込み
+# tid = 0
+# # 教師文書を読み込み
+# space = {}
+# for line in open('train.cleaner_tf.txt', 'r'):
+#     line = line.replace(" \n", "\n")
+#     line_ = str_dic(line)
+#     space[tid] = line_
+#     # print(space[tid])
+#     tid += 1
+
 tid = 0
 # 教師文書を読み込み
 space = {}
-for line in open('train.cleaner_tf.txt', 'r'):
-    line_ = str_dic(line)
-    space[tid] = read_vec( line_, 'cleaner')
-    tid += 1
+all_data = ''
+for line in open('train.cleaner.txt', 'r'):
+    line = line.replace("\n", "")
+    all_data = all_data+line
 
+print(all_data)
 # ----- ----- ----- ----- ----- # 教師文書の読み込み
 
 
