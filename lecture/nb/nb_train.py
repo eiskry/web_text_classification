@@ -50,8 +50,6 @@ for id in pwj_cleaner.keys():
     tmp = pwj_cleaner[id] + delta
     pwj_cleaner[id] = tmp / all_words_cleaner
 
-# print(pwj_mp3player)
-# print(len(pwj_cleaner))
 
 with open('pwj_cleaner.txt', 'w') as f:
   print(pwj_cleaner, file=f)
