@@ -28,15 +28,22 @@ for line in open('train.cleaner_tf.txt', 'r'):
 
 # print(space[0]['まし'])
 
-pwej_cleaner = {}
+pwj_cleaner = {}
 for id in space.keys():
     for val in space[id].keys():
-        if (val not in pwej_cleaner):
-            pwej_cleaner[val] = space[id][val]
+        if (val not in pwj_cleaner):
+            pwj_cleaner[val] = space[id][val]
         else:
-            pwej_cleaner[val] = pwej_cleaner[val]+space[id][val]
+            pwj_cleaner[val] = pwj_cleaner[val]+space[id][val]
 
-print(pwej_mp3player)
+for id in pwj_cleaner.keys():
+    pwj_cleaner[id] = pwj_cleaner[id]/len(pwj_cleaner)
+
+# print(pwj_mp3player)
+# print(len(pwj_cleaner))
+
+with open('pwj_cleaner.txt', 'w') as f:
+  print(pwj_cleaner, file=f)
 
 # ----- ----- ----- # train.mp3player_tf.txt
 tid = 0
@@ -51,11 +58,19 @@ for line in open('train.mp3player_tf.txt', 'r'):
 
 # print(space[0]['まし'])
 
-pwej_mp3player = {}
+pwj_mp3player = {}
 for id in space.keys():
     for val in space[id].keys():
-        if (val not in pwej_mp3player):
-            pwej_mp3player[val] = space[id][val]
+        if (val not in pwj_mp3player):
+            pwj_mp3player[val] = space[id][val]
         else:
-            pwej_mp3player[val] = pwej_mp3player[val]+space[id][val]
-print(pwej_mp3player)
+            pwj_mp3player[val] = pwj_mp3player[val]+space[id][val]
+# print(pwj_mp3player)
+
+for id in pwj_mp3player.keys():
+    pwj_mp3player[id] = pwj_mp3player[id]/len(pwj_mp3player)
+
+# print(len(pwj_mp3player))
+
+with open('pwj_mp3player.txt', 'w') as f:
+  print(pwj_mp3player, file=f)
