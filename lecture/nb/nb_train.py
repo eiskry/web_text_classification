@@ -13,8 +13,10 @@ def str_dic(x):
     d2 = ast.literal_eval(d1)
     return d2
 
+# smoothing
 delta = 1
 # delta = 0
+
 # ----- ----- ----- ----- ----- # 教師文書の読み込み
 
 # ----- ----- ----- # train.cleaner_tf.txt
