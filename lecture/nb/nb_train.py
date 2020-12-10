@@ -13,6 +13,7 @@ def str_dic(x):
     d2 = ast.literal_eval(d1)
     return d2
 
+delta = 1
 # ----- ----- ----- ----- ----- # 教師文書の読み込み
 
 # ----- ----- ----- # train.cleaner_tf.txt
@@ -36,8 +37,15 @@ for id in space.keys():
         else:
             pwj_cleaner[val] = pwj_cleaner[val]+space[id][val]
 
+all_words_cleaner = 0
 for id in pwj_cleaner.keys():
-    pwj_cleaner[id] = pwj_cleaner[id]/len(pwj_cleaner)
+    tmp = pwj_cleaner[id] + delta
+    all_words_cleaner = all_words_cleaner + tmp
+# print(all_words_cleaner)
+
+for id in pwj_cleaner.keys():
+    tmp = pwj_cleaner[id] + delta
+    pwj_cleaner[id] = tmp / all_words_cleaner
 
 # print(pwj_mp3player)
 # print(len(pwj_cleaner))
@@ -67,9 +75,23 @@ for id in space.keys():
             pwj_mp3player[val] = pwj_mp3player[val]+space[id][val]
 # print(pwj_mp3player)
 
-for id in pwj_mp3player.keys():
-    pwj_mp3player[id] = pwj_mp3player[id]/len(pwj_mp3player)
+# for id in pwj_mp3player.keys():
+#     pwj_mp3player[id] = pwj_mp3player[id]/len(pwj_mp3player)
 
+all_words_mp3player = 0
+for id in pwj_mp3player.keys():
+    tmp = pwj_mp3player[id] + delta
+    all_words_mp3player = all_words_mp3player + tmp
+# print(all_words_cleaner)
+
+print(all_words_mp3player)
+
+for id in pwj_mp3player.keys():
+    tmp = pwj_mp3player[id] + delta
+    pwj_mp3player[id] = tmp / all_words_mp3player
+
+# print(pwj_mp3player)
+# print(len(pwj_cleaner))
 # print(len(pwj_mp3player))
 
 with open('pwj_mp3player.txt', 'w') as f:
