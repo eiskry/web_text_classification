@@ -5,7 +5,7 @@ import ast
 ##### 訓練ステップ
 ##### 教師文書を利用して、各クラス、各単語についてp(w_j, c_i)を求める
 
-# ----- ----- ----- ----- ----- # 関数の定義
+# ----- ----- ----- ----- ----- # 関数・deltaの定義
 
 def str_dic(x):
     d = x
@@ -13,7 +13,8 @@ def str_dic(x):
     d2 = ast.literal_eval(d1)
     return d2
 
-delta = 1
+# delta = 1
+delta = 0
 # ----- ----- ----- ----- ----- # 教師文書の読み込み
 
 # ----- ----- ----- # train.cleaner_tf.txt
@@ -84,7 +85,7 @@ for id in pwj_mp3player.keys():
     all_words_mp3player = all_words_mp3player + tmp
 # print(all_words_cleaner)
 
-print(all_words_mp3player)
+# print(all_words_mp3player)
 
 for id in pwj_mp3player.keys():
     tmp = pwj_mp3player[id] + delta
