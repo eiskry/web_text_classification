@@ -15,7 +15,7 @@ def str_dic(x):
     return d2
 
 # smoothing　有効
-delta = 61.13
+delta = 50
 
 # smoothing を行わない場合
 # delta = 0
