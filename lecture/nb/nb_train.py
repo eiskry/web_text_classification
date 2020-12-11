@@ -1,6 +1,7 @@
 import MeCab as mc
 from collections import Counter
 import ast
+import math
 
 ##### 訓練ステップ
 ##### 教師文書を利用して、各クラス、各単語についてp(w_j, c_i)を求める
@@ -47,7 +48,7 @@ for id in pwj_cleaner.keys():
 # 最終的なP(wj|ci)を計算
 for id in pwj_cleaner.keys():
     tmp = pwj_cleaner[id] + delta
-    pwj_cleaner[id] = tmp / all_words_cleaner
+    pwj_cleaner[id] = tmp / (all_words_cleaner)
 
 # P(wj|ci)をファイルに出力
 with open('pwj_cleaner.txt', 'w') as f:
@@ -82,7 +83,7 @@ for id in pwj_mp3player.keys():
 # 最終的なP(wj|ci)を計算
 for id in pwj_mp3player.keys():
     tmp = pwj_mp3player[id] + delta
-    pwj_mp3player[id] = tmp / all_words_mp3player
+    pwj_mp3player[id] = tmp / (all_words_mp3player)
 
 # P(wj|ci)をファイルに出力
 with open('pwj_mp3player.txt', 'w') as f:

@@ -52,10 +52,10 @@ for id in nwjx.keys():
     val_cleaner = 0
     val_mp3player = 0
     for val in nwjx[id].keys():
-        tmp = nwjx[id][val]* math.exp(pwj_cleaner[val])
+        tmp = nwjx[id][val]* math.log(pwj_cleaner[val])
         val_cleaner = val_cleaner + tmp
     for val in nwjx[id].keys():
-        tmp = nwjx[id][val]* math.exp(pwj_mp3player[val])
+        tmp = nwjx[id][val]* math.log(pwj_mp3player[val])
         val_mp3player = val_mp3player + tmp
     output_class = 'cleaner' if val_cleaner > val_mp3player else 'mp3player'
     print( output_class )
