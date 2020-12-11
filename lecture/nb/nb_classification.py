@@ -28,16 +28,19 @@ for line in open('test_tf.txt', 'r'):
 # ----- ----- ----- ----- ----- # 2
 # 入力文書の各単語に対して、訓練フェースの結果を参照してp(w_j, c_i)を得る
 
+# 訓練フェーズの結果を参照
 pwj_cleaner = nb_train.pwj_cleaner
 pwj_mp3player = nb_train.pwj_mp3player
 all_words_cleaner = nb_train.all_words_cleaner
 all_words_mp3player = nb_train.all_words_mp3player
 
+# cleanerクラスに関してP(wj|ci) を求める
 for id in nwjx.keys():
     for val in nwjx[id].keys():
         if (val not in pwj_cleaner):
             pwj_cleaner[val] = 1 / all_words_cleaner
 
+# mp3playerクラスに関してP(wj|ci) を求める
 for id in nwjx.keys():
     for val in nwjx[id].keys():
         if (val not in pwj_mp3player):
