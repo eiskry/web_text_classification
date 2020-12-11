@@ -20,10 +20,10 @@ delta = 1
 # smoothing を行わない場合
 # delta = 0
 
-# ----- ----- ----- ----- ----- # 教師文書の読み込み
-# ----- ----- ----- # train.cleaner_tf.txt
-tid = 0
+# ----- ----- ----- # cleanerクラスについてP(wj|ci)を求める
+
 # 教師文書を読み込み
+tid = 0
 space = {}
 for line in open('train.cleaner_tf.txt', 'r'):
     line = line.replace(" \n", "\n")
@@ -31,7 +31,6 @@ for line in open('train.cleaner_tf.txt', 'r'):
     space[tid] = line_
     tid += 1
 
-# cleanerクラスについてP(wj|ci)を求める
 # 各単語の生起頻度を登録
 pwj_cleaner = {}
 for id in space.keys():
@@ -56,9 +55,11 @@ for id in pwj_cleaner.keys():
 with open('pwj_cleaner.txt', 'w') as f:
   print(pwj_cleaner, file=f)
 
-# ----- ----- ----- # train.mp3player_tf.txt
-tid = 0
+
+# ----- ----- ----- # # mp3playerクラスについてP(wj|ci)を求める
+
 # 教師文書を読み込み
+tid = 0
 space = {}
 for line in open('train.mp3player_tf.txt', 'r'):
     line = line.replace(" \n", "\n")
@@ -66,7 +67,6 @@ for line in open('train.mp3player_tf.txt', 'r'):
     space[tid] = line_
     tid += 1
 
-# mp3playerクラスについてP(wj|ci)を求める
 # 各単語の生起頻度を登録
 pwj_mp3player = {}
 for id in space.keys():
