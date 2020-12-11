@@ -6,7 +6,6 @@ import ast
 ##### 教師文書を利用して、各クラス、各単語についてp(w_j, c_i)を求める
 
 # ----- ----- ----- ----- ----- # 関数・deltaの定義
-
 # 特徴抽出結果を受け取り辞書に変換
 def str_dic(x):
     d = x
@@ -21,7 +20,6 @@ delta = 1
 # delta = 0
 
 # ----- ----- ----- # cleanerクラスについてP(wj|ci)を求める
-
 # 教師文書を読み込み
 tid = 0
 space = {}
@@ -57,7 +55,6 @@ with open('pwj_cleaner.txt', 'w') as f:
 
 
 # ----- ----- ----- # # mp3playerクラスについてP(wj|ci)を求める
-
 # 教師文書を読み込み
 tid = 0
 space = {}
