@@ -26,7 +26,8 @@ def pwj_class(test_data, pwj_class, all_words_class):
 
 def decide_class(test_data, pwj_class1, pwj_class2):
     val = {}
-    for id in test.keys():
+    tid = 0
+    for id in test_data.keys():
         val_class1 = 0
         val_class2 = 0
         for val in test_data[id].keys():
@@ -35,6 +36,7 @@ def decide_class(test_data, pwj_class1, pwj_class2):
         for val in test_data[id].keys():
             tmp = test_data[id][val]* math.log(pwj_class2[val])
             val_class2 = val_class2 + tmp
-        output_class = 'pos' if val_cleaner > val_mp3player else 'neg'
-        val[id] = output_class
+        output_class = 'pos' if val_class1 > val_class2 else 'neg'
+        val[tid] = output_class
+        tid += 1
     return val
