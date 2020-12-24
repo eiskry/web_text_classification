@@ -1,4 +1,6 @@
 import my_function
+import nv_train
+import nv_classification
 
 # ----- ----- ----- ----- ----- # 1
 # データセットを n 個のブロックに分割する.
@@ -113,12 +115,16 @@ for i in range(n):
     tmp = tmp + len(train_pos_data[i])
     print(len(train_pos_data[i]))
 print(tmp)
+# print(train_pos_data[0])
 
 # print( len(split_pos[1])+len(split_pos[2]) +len(split_pos[3]) + len(split_pos[4]) )
 
 
 # 3. 評価データに採用するブロックを変化させながら，学習&評価を n 回繰り返す. 
 for i in range(n):
+    pwj_pos[i] = {}
+
+
 
 
 # 4. さいごに，評価値の平均値を計算する.
