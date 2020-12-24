@@ -25,8 +25,8 @@ def pwj_class(test_data, pwj_class, all_words_class):
 #　N(w_j, x)とp(w_j, c_i)の情報から分類クラスを決定する
 
 def decide_class(test_data, pwj_class1, pwj_class2):
-    val = {}
-    tid = 0
+    output_class = {}
+    tid = 1
     for id in test_data.keys():
         val_class1 = 0
         val_class2 = 0
@@ -36,7 +36,7 @@ def decide_class(test_data, pwj_class1, pwj_class2):
         for val in test_data[id].keys():
             tmp = test_data[id][val]* math.log(pwj_class2[val])
             val_class2 = val_class2 + tmp
-        output_class = 'pos' if val_class1 > val_class2 else 'neg'
-        val[tid] = output_class
+        output_class_ = 'pos' if val_class1 > val_class2 else 'neg'
+        output_class[tid] = output_class_
         tid += 1
-    return val
+    return output_class
