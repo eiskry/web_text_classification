@@ -153,11 +153,12 @@ for i in range(n):
     for l in range(len(split_pos[i]), len(test_data[i])):
         if val[i][l+1] == 'neg':
             count += 1
-    print(count)
+    # print(count)
     correct_rate[i] = count / len(test_data[i])
 
 # 4. さいごに，評価値の平均値を計算する.
 sum = 0
 for i in range(n):
     sum = correct_rate[i] + sum
-print(sum/5)
+average = sum / 5
+print(average)
