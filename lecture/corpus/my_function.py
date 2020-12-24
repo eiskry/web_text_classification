@@ -3,6 +3,7 @@ from collections import Counter
 import ast
 import math
 
+
 # ----- ----- ----- ----- ----- # 関数の定義
 # 特徴抽出結果を受け取り辞書に変換
 def str_dic(x):
@@ -53,8 +54,18 @@ def shift_keys(data, n):
     return new_data
 
 def link_data(data1, data2):
+    linked_data = {}
     n = len(data1)
     # print(n)
     shifted_data2 = shift_keys(data2, n)
-    data1.update(shifted_data2)
-    return data1
+    linked_data.update(data1)
+    linked_data.update(shifted_data2)
+    return linked_data
+
+def rec_num(n):
+    if n > 4:
+        return n - 5
+    elif n < 0:
+        return n + 5
+    else:
+        return n
