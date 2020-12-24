@@ -19,6 +19,7 @@ def mecab_analysis(text):
 def tf(text):
     while True:
         line = text.readline()
+        line = line.replace('"', '')
         if line:
             words = mecab_analysis(line)
             counter = Counter(words)

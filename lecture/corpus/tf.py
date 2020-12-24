@@ -22,6 +22,8 @@ def mecab_analysis(text):
 if Path(sys.argv[1]).exists():  # 第一引数がファイルだったら
     for line in fileinput.input():  # ファイルの内容を一行ずつprint
         if line:
+            line = line.replace('"', '')
+            line = line.replace('\\', '')
             words = mecab_analysis(line)
             counter = Counter(words)
             for word, count in counter.most_common():
