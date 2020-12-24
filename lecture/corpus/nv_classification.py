@@ -1,5 +1,4 @@
 import ast
-import nb_train
 import math
 import my_function
 
@@ -26,6 +25,7 @@ def pwj_class(test_data, pwj_class, all_words_class):
 #　N(w_j, x)とp(w_j, c_i)の情報から分類クラスを決定する
 
 def decide_class(test_data, pwj_class1, pwj_class2):
+    val = {}
     for id in test.keys():
         val_class1 = 0
         val_class2 = 0
@@ -35,5 +35,6 @@ def decide_class(test_data, pwj_class1, pwj_class2):
         for val in test_data[id].keys():
             tmp = test_data[id][val]* math.log(pwj_class2[val])
             val_class2 = val_class2 + tmp
-        output_class = 'class1' if val_cleaner > val_mp3player else 'class2'
-        print( output_class )
+        output_class = 'pos' if val_cleaner > val_mp3player else 'neg'
+        val[id] = output_class
+    return val

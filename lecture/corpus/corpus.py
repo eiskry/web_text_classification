@@ -126,6 +126,7 @@ pwj_neg = {}
 all_words_pos_class = {}
 all_words_neg_class = {}
 # nwjx = {}
+val = {}
 correct_rate = {}
 for i in range(n):
     # nv
@@ -144,6 +145,8 @@ for i in range(n):
     # nwjx[i] = test_data[i]
     pwj_pos[i] = nv_classification.pwj_class(test_data[i], pwj_pos[i], all_words_pos_class[i])
     pwj_neg[i] = nv_classification.pwj_class(test_data[i], pwj_neg[i], all_words_neg_class[i])
+    val[i] = nv_classification.decide_class(test_data[i], pwj_pos[i], pwj_neg[i])
+    
 
 
 # 4. さいごに，評価値の平均値を計算する.
