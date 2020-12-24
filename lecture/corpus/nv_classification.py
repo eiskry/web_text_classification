@@ -9,13 +9,7 @@ import my_function
 # ----- ----- ----- ----- ----- # 1
 # 入力文書の各単語に対して、N(w_j, x)を求める
 
-tid = 0
-nwjx = {}
-for line in open('test_tf.txt', 'r'):
-    line = line.replace(" \n", "\n")
-    line_ = str_dic(line)
-    nwjx[tid] = line_
-    tid += 1
+
 
 # ----- ----- ----- ----- ----- # 2
 # 入力文書の各単語に対して、訓練フェースの結果を参照してp(w_j, c_i)を得る

@@ -107,24 +107,43 @@ for i in range(n):
     tmp_neg2 = my_function.link_data(split_neg[my_function.rec_num(i+2)], split_neg[my_function.rec_num(i+3)])
     train_neg_data[i] = my_function.link_data(tmp_neg1, tmp_neg2)
 
-print(len(train_pos_data[0]))
-print(len(split_pos[0]))
+# print(len(train_pos_data[0]))
+# print(len(split_pos[0]))
 
-tmp = 0
-for i in range(n):
-    tmp = tmp + len(train_pos_data[i])
-    print(len(train_pos_data[i]))
-print(tmp)
+# tmp = 0
+# for i in range(n):
+#     tmp = tmp + len(train_pos_data[i])
+#     print(len(train_pos_data[i]))
+# print(tmp)
 # print(train_pos_data[0])
 
 # print( len(split_pos[1])+len(split_pos[2]) +len(split_pos[3]) + len(split_pos[4]) )
 
 
 # 3. 評価データに採用するブロックを変化させながら，学習&評価を n 回繰り返す. 
+pwj_pos = {}
+pwj_neg = {}
+all_words_pos_class = {}
+all_words_neg_class = {}
+# nwjx = {}
+correct_rate = {}
 for i in range(n):
-    pwj_pos[i] = {}
+    # nv
+    ## 訓練ステップ
+    ### pos データについて
+    pwj_pos[i] = nv_train.train_count_pwj(train_pos_data[i])
+    all_words_pos_class[i] = nv_train.train_count_word(pwj_pos[i])
+    pwj_pos[i] = nv_train.train_pwj_class(pwj_pos[i], all_words_pos_class[i])
 
+    ### neg　データについて
+    pwj_neg[i] = nv_train.train_count_pwj(train_neg_data[0])
+    all_words_neg_class[i] = nv_train.train_count_word(pwj_neg[i])
+    pwj_neg[i] = nv_train.train_pwj_class(pwj_neg[i], all_words_neg_class[i])
 
+    ## 分類フェーズ
+    # nwjx[i] = test_data[i]
+    pwj_pos[i] = nv_classification.pwj_class(test_data[i], pwj_pos[i], all_words_pos_class[i])
+    pwj_neg[i] = nv_classification.pwj_class(test_data[i], pwj_neg[i], all_words_neg_class[i])
 
 
 # 4. さいごに，評価値の平均値を計算する.
