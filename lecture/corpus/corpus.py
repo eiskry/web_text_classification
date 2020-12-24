@@ -64,13 +64,13 @@ split_neg = my_function.make_split_data(neg_data, n)
 # print(tmp)
 
 # 2. ひとつのブロックを評価データ，のこりを学習データとする.
-print(len(split_pos[0]))
+# print(len(split_pos[0]))
 ### 評価データの作成
 test_data = {}
 for i in range(n):
     test_data[i] = my_function.link_data(split_pos[i], split_neg[i])
 
-print(len(split_pos[0]))
+# print(len(split_pos[0]))
 
 # tmp = 0
 # for i in range(n):
@@ -146,14 +146,18 @@ for i in range(n):
     pwj_pos[i] = nv_classification.pwj_class(test_data[i], pwj_pos[i], all_words_pos_class[i])
     pwj_neg[i] = nv_classification.pwj_class(test_data[i], pwj_neg[i], all_words_neg_class[i])
     val[i] = nv_classification.decide_class(test_data[i], pwj_pos[i], pwj_neg[i])
-    for j in range(len(test_data[i])):
-        count = 0
-        for k in range(len(split_pos[i])):
-            if val[i][k] == 'pos':
-                count += 1
-        for l in range(len(split_pos[i]), len(test_data[i])):
-            if val[i][k] == 'pos':
-                count += 1
+    count = 0
+    for k in range(len(split_pos[i])):
+        if val[i][k+1] == 'pos':
+            count += 1
+    for l in range(len(split_pos[i]), len(test_data[i])):
+        if val[i][l+1] == 'neg':
+            count += 1
+    print(count)
     correct_rate[i] = count / len(test_data[i])
 
 # 4. さいごに，評価値の平均値を計算する.
+sum = 0
+for i in range(n):
+    sum = correct_rate[i] + sum
+print(sum/5)
