@@ -40,8 +40,21 @@ def make_split_data(data, n):
         s = e
     return split_data
 
+def change_dict_key(d, old_key, new_key):
+    d[new_key] = d.pop(old_key)
+    return d
+
 def shift_keys(data, n):
     new_data = {}
-    for i in range(len(data)):
-        new_data[n+1] = data[i]
+    length = len(data)
+    for i in range(length):
+        i = i + 1
+        new_data[i+n] = data[i]
     return new_data
+
+def link_data(data1, data2):
+    n = len(data1)
+    # print(n)
+    shifted_data2 = shift_keys(data2, n)
+    data1.update(shifted_data2)
+    return data1

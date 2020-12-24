@@ -36,19 +36,45 @@ neg_data = my_function.read_tf(text)
 
 split_neg = my_function.make_split_data(neg_data, n)
 
+# print(split_pos[2])
+# print(len(split_pos[0]))
+# print(split_pos[2])
+
+# for id in split_pos[2].keys:
+#     print(id)
+
+
+# print(len(split_pos[0])+ len(split_pos[1]))
+
+# new_data = my_function.link_data(split_pos[0], split_pos[1])
+# print(len(new_data))
+
 # tmp = 0
 # for i in range(n):
 #     tmp = tmp + len(split_neg[i])
 #     print(len(split_neg[i]))
 # print(tmp)
 
-split_data={}
-for i in range(n):
-    
-
 # 2. ひとつのブロックを評価データ，のこりを学習データとする.
+### case 1
+##### test = 0
+
+
+### case 2
+##### test = 1
+
+### case 3
+##### test = 2
+
+### case 4
+##### test = 3
+
+### case 5
+##### test = 4
+
+
 # 3. 評価データに採用するブロックを変化させながら，学習&評価を n 回繰り返す. 
-for i in range(n):
+
 
 
 # 4. さいごに，評価値の平均値を計算する.
