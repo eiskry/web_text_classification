@@ -10,61 +10,28 @@ import my_function
 # smoothing　有効
 delta = 1
 
-# ----- ----- ----- # cleanerクラスについてP(wj|ci)を求める
-# 学習文書を読み込み
-text1 = open("positive_tf.txt", "r")
-positive_tf_data = read_tf(text1)
+# ----- ----- ----- # P(wj|ci)を求める
+# あるクラスの教師文書の各単語の生起頻度を計算
+def train_count_wj(data):
+    wj_class = {}
+    for id in data.keys():
+        for val in data[id].keys():
+            if (val not in wj_class):
+                wj_class[val] = data[id][val]
+            else:
+                wj_class[val] = wj_class[val]+data[id][val]
+    return wj_class
 
-# 各単語の生起頻度を登録
-pwj_cleaner = {}
-for id in space.keys():
-    for val in space[id].keys():
-        if (val not in pwj_cleaner):
-            pwj_cleaner[val] = space[id][val]
-        else:
-            pwj_cleaner[val] = pwj_cleaner[val]+space[id][val]
-
-# cleanerクラスの全単語数を計算
-all_words_cleaner = 0
-for id in pwj_cleaner.keys():
-    tmp = pwj_cleaner[id] + delta
-    all_words_cleaner = all_words_cleaner + tmp
-
-# 最終的なP(wj|ci)を計算
-for id in pwj_cleaner.keys():
-    tmp = pwj_cleaner[id] + delta
-    pwj_cleaner[id] = tmp / (all_words_cleaner)
-
-# P(wj|ci)をファイルに出力
-with open('pwj_cleaner.txt', 'w') as f:
-  print(pwj_cleaner, file=f)
-
-
-# ----- ----- ----- # # mp3playerクラスについてP(wj|ci)を求める
-# 学習文書を読み込み
-text2 = open("negative_tf.txt", "r")
-positive_tf_data = read_tf(text1)
-
-# 各単語の生起頻度を登録
-pwj_mp3player = {}
-for id in space.keys():
-    for val in space[id].keys():
-        if (val not in pwj_mp3player):
-            pwj_mp3player[val] = space[id][val]
-        else:
-            pwj_mp3player[val] = pwj_mp3player[val]+space[id][val]
-
-# mp3playerクラスの全単語数を計算
-all_words_mp3player = 0
-for id in pwj_mp3player.keys():
-    tmp = pwj_mp3player[id] + delta
-    all_words_mp3player = all_words_mp3player + tmp
+# あるクラスの教師文書の全単語数を計算
+def train_count_word(pwj_class):
+    all_words_class = 0
+    for id in pwj_class.keys():
+        tmp = pwj_class[id] + delta
+        all_words_class = all_words_cleaner + tmp
+    return all_words_class
 
 # 最終的なP(wj|ci)を計算
-for id in pwj_mp3player.keys():
-    tmp = pwj_mp3player[id] + delta
-    pwj_mp3player[id] = tmp / (all_words_mp3player)
-
-# P(wj|ci)をファイルに出力
-with open('pwj_mp3player.txt', 'w') as f:
-  print(pwj_mp3player, file=f)
+def train_pwj_class(pwj_class, all_words_class):
+    for id in pwj_class.keys():
+        tmp = pwj_class[id] + delta
+        pwj_class[id] = tmp / (all_words_class)

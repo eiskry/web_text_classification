@@ -1,17 +1,10 @@
 import ast
 import nb_train
 import math
+import my_function
 
 ##### 分類ステップ
 ##### 入力文書xに対して、分類クラスを決定する
-
-# ----- ----- ----- ----- ----- # 関数の定義
-# 特徴抽出結果を受け取り辞書に変換
-def str_dic(x):
-    d = x
-    d1 = '{' + '"' + d.replace(':', '":').replace(' ', ', "') + '}'
-    d2 = ast.literal_eval(d1)
-    return d2
 
 # ----- ----- ----- ----- ----- # 1
 # 入力文書の各単語に対して、N(w_j, x)を求める

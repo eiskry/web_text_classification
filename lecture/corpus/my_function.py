@@ -21,3 +21,27 @@ def read_tf(text):
         space[tid] = line_
         tid += 1
     return space
+
+def partial_data(data, s, e):
+    partial_data ={}
+    for j in range(s, e):
+        partial_data[j-s+1] = data[j]
+    return partial_data
+
+def make_split_data(data, n):
+    split_data={}
+    split_num = n
+    data_size = len(data)
+    s = 0
+    for i in range(split_num):
+        i = i + 1
+        e = int(data_size/split_num * i)
+        split_data[i-1] = partial_data(data, s, e)
+        s = e
+    return split_data
+
+def shift_keys(data, n):
+    new_data = {}
+    for i in range(len(data)):
+        new_data[n+1] = data[i]
+    return new_data
