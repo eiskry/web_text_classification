@@ -14,21 +14,26 @@ def str_dic(x):
     d2 = ast.literal_eval(d1)
     return d2
 
-# smoothing　有効
-delta = 50
+def read_tf(text,data_name):
+    tid = 0
+    data_name = {}
+    for line in open(text):
+        line = line.replace(" \n", "\n")
+        line_ = str_dic(line)
+        data_name[tid] = line_
+        tid += 1
 
+
+# smoothing　有効
+delta = 1
 # smoothing を行わない場合
 # delta = 0
 
 # ----- ----- ----- # cleanerクラスについてP(wj|ci)を求める
-# 教師文書を読み込み
-tid = 0
-space = {}
-for line in open('train.cleaner_tf.txt', 'r'):
-    line = line.replace(" \n", "\n")
-    line_ = str_dic(line)
-    space[tid] = line_
-    tid += 1
+# 学習文書を読み込み
+text1 = open("positive_tf.txt", "r", encoding = "utf-8")
+data_name = positive_data
+read_tf
 
 # 各単語の生起頻度を登録
 pwj_cleaner = {}
@@ -56,7 +61,7 @@ with open('pwj_cleaner.txt', 'w') as f:
 
 
 # ----- ----- ----- # # mp3playerクラスについてP(wj|ci)を求める
-# 教師文書を読み込み
+# 学習文書を読み込み
 tid = 0
 space = {}
 for line in open('train.mp3player_tf.txt', 'r'):

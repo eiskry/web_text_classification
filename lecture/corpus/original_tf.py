@@ -1,8 +1,5 @@
 import MeCab as mc
 from collections import Counter
-import sys
-import fileinput
-from pathlib import Path
 
 def mecab_analysis(text):
     t = mc.Tagger("-Ochasen")
@@ -19,8 +16,9 @@ def mecab_analysis(text):
             break
     return output
 
-if Path(sys.argv[1]).exists():  # 第一引数がファイルだったら
-    for line in fileinput.input():  # ファイルの内容を一行ずつprint
+def tf(text):
+    while True:
+        line = text.readline()
         if line:
             words = mecab_analysis(line)
             counter = Counter(words)
@@ -30,3 +28,15 @@ if Path(sys.argv[1]).exists():  # 第一引数がファイルだったら
             print("")
         else:
             break
+       
+
+text1 = open("positive.txt", "r", encoding = "utf-8")
+
+def main():
+    #tf(text1)
+    # tf(text2)
+    tf(text1)
+
+if __name__ == '__main__':
+    main()
+    
