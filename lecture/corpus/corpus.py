@@ -77,13 +77,13 @@ for i in range(n):
     correct_rate[i] = count / len(test_data[i])
 
 print("")
-print("--- Results --- ")
+print("Results")
 for i in range(n):
     print(i+1 , ":",  correct_rate[i])
 
 # 4. さいごに，評価値の平均値を計算する.
-print("")
-print("--- Average --- ")
+# print("")
+print("Average")
 sum = 0
 for i in range(n):
     sum = correct_rate[i] + sum
