@@ -1,10 +1,8 @@
-import MeCab as mc
-from collections import Counter
 import ast
-import math
 
+num_split = 5
 
-# ----- ----- ----- ----- ----- # 関数の定義
+# ----- ----- ----- ----- ----- # 
 # 特徴抽出結果を受け取り辞書に変換
 def str_dic(x):
     d = x
@@ -12,6 +10,7 @@ def str_dic(x):
     d2 = ast.literal_eval(d1)
     return d2
 
+# ----- ----- ----- ----- ----- # 
 # tf特徴抽出結果を読み込む
 def read_tf(text):
     tid = 0
@@ -23,12 +22,15 @@ def read_tf(text):
         tid += 1
     return space
 
+# ----- ----- ----- ----- ----- # 
+# sからeまでのdataを抽出する
 def partial_data(data, s, e):
     partial_data ={}
     for j in range(s, e):
         partial_data[j-s+1] = data[j]
     return partial_data
 
+# dataをn分割する
 def make_split_data(data, n):
     split_data={}
     split_num = n
@@ -41,10 +43,13 @@ def make_split_data(data, n):
         s = e
     return split_data
 
+# ----- ----- ----- ----- ----- # 
+# 辞書のキーを変更する
 def change_dict_key(d, old_key, new_key):
     d[new_key] = d.pop(old_key)
     return d
 
+# 辞書のキーをnだけずらす
 def shift_keys(data, n):
     new_data = {}
     length = len(data)
@@ -53,6 +58,7 @@ def shift_keys(data, n):
         new_data[i+n] = data[i]
     return new_data
 
+# 辞書型の2つのデータを結合する
 def link_data(data1, data2):
     linked_data = {}
     n = len(data1)
@@ -62,10 +68,12 @@ def link_data(data1, data2):
     linked_data.update(shifted_data2)
     return linked_data
 
+# ----- ----- ----- ----- ----- # 
+# 数字の循環
 def rec_num(n):
-    if n > 4:
-        return n - 5
+    if n > num_split - 1:
+        return n - num_split
     elif n < 0:
-        return n + 5
+        return n + num_split
     else:
         return n
