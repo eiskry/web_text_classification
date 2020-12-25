@@ -19,8 +19,8 @@ def mecab_analysis(text):
             break
     return output
 
-if Path(sys.argv[1]).exists():  # 第一引数がファイルだったら
-    for line in fileinput.input():  # ファイルの内容を一行ずつprint
+if Path(sys.argv[1]).exists():  
+    for line in fileinput.input():  
         if line:
             line = line.replace('"', '')
             line = line.replace('\\', '')

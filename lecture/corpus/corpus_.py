@@ -9,6 +9,14 @@ n=5
 # positive_tf
 text = open("positive_tf.txt", "r")
 pos_data = my_function.read_tf(text)
+
+# s = 0
+# for i in range(n):
+#     i = i + 1
+#     e = int(pos_size/n * i)
+#     partial_pos[i-1] = my_function.make_partial_data(pos_data, s, e)
+#     s = e
+
 # posデータを分割
 split_pos = my_function.make_split_data(pos_data, n)
 
@@ -16,8 +24,14 @@ split_pos = my_function.make_split_data(pos_data, n)
 # negative_tf
 text = open("negative_tf.txt", "r")
 neg_data = my_function.read_tf(text)
-# negデータを分割
+
 split_neg = my_function.make_split_data(neg_data, n)
+
+# print(len(split_pos[0])+ len(split_pos[1]))
+
+# new_data = my_function.link_data(split_pos[0], split_pos[1])
+# print(len(new_data))
+
 
 # ----- ----- ----- ----- ----- # 2
 # 2. ひとつのブロックを評価データ，のこりを学習データとする.
@@ -25,6 +39,17 @@ split_neg = my_function.make_split_data(neg_data, n)
 test_data = {}
 for i in range(n):
     test_data[i] = my_function.link_data(split_pos[i], split_neg[i])
+
+
+# tmp = 0
+# for i in range(n):
+#     tmp = tmp + len(split_pos[i])
+#     print(len(split_pos[i]))
+# print(tmp)
+
+# for i in range(n):
+#     print(i, my_function.rec_num(i-1), my_function.rec_num(i+1), 
+#             my_function.rec_num(i+2), my_function.rec_num(i+3)) 
 
 # ### 学習データの作成
 train_pos_data = {}
@@ -41,12 +66,14 @@ for i in range(n):
     tmp_neg2 = my_function.link_data(split_neg[my_function.rec_num(i+2)], split_neg[my_function.rec_num(i+3)])
     train_neg_data[i] = my_function.link_data(tmp_neg1, tmp_neg2)
 
+
 # ----- ----- ----- ----- ----- # 3
 # 3. 評価データに採用するブロックを変化させながら，学習&評価を n 回繰り返す. 
 pwj_pos = {}
 pwj_neg = {}
 all_words_pos_class = {}
 all_words_neg_class = {}
+# nwjx = {}
 val = {}
 correct_rate = {}
 for i in range(n):
@@ -74,6 +101,7 @@ for i in range(n):
     for l in range(len(split_pos[i]), len(test_data[i])):
         if val[i][l+1] == 'neg':
             count += 1
+    # print(count)
     correct_rate[i] = count / len(test_data[i])
 
 print("")

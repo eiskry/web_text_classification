@@ -1,7 +1,4 @@
-import MeCab as mc
-from collections import Counter
 import ast
-import math
 import my_function
 
 ##### 訓練ステップ
@@ -11,7 +8,6 @@ import my_function
 delta = 1
 
 # ----- ----- ----- # P(wj|ci)を求める
-
 # あるクラスの教師文書の各単語の生起頻度を計算
 def train_count_pwj(data):
     pwj_class = {}
