@@ -31,13 +31,9 @@ def tf(text):
             break
        
 
-text1 = open("train.cleaner.txt", "r", encoding = "utf-8")
-text2 = open("train.mp3player.txt", "r", encoding = "utf-8")
-text3 = open("test.txt", "r", encoding = "utf-8")
+text = open("train.cleaner.txt", "r", encoding = "utf-8")
 
 def main():
-    #tf(text1)
-    # tf(text2)
     tf(text3)
 
 if __name__ == '__main__':

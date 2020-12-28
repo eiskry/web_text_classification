@@ -7,7 +7,6 @@ import my_function
 # smoothing
 delta = 9
 
-
 # ----- ----- ----- # P(wj|ci)を求める
 # あるクラスの教師文書の各単語の生起頻度を計算
 def train_count_pwj(data):
