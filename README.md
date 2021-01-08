@@ -1,4 +1,4 @@
-# web　text　classifficaton
+# Web　Text　Classifficaton
 Web文書分類　Python
 - 特徴抽出
   - 分類
