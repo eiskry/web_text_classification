@@ -2,8 +2,8 @@
 Web文書分類　
 
 ### Language
-Python
-
+- Python
+- Ruby
 ### Topics
 
 - 特徴抽出
