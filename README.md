@@ -1,7 +1,10 @@
 # Web Text Classifficaton
-Web文書分類　Python
+Web文書分類　
 
-トピック
+### Language
+Python
+
+### Topics
 
 - 特徴抽出
   - 分類
