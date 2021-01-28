@@ -41,6 +41,8 @@ for i in range(n):
     tmp_neg2 = my_function.link_data(split_neg[my_function.rec_num(i+2)], split_neg[my_function.rec_num(i+3)])
     train_neg_data[i] = my_function.link_data(tmp_neg1, tmp_neg2)
 
+
+
 # ----- ----- ----- ----- ----- # 3
 # 3. 評価データに採用するブロックを変化させながら，学習&評価を n 回繰り返す. 
 w_pos = {}
@@ -49,45 +51,54 @@ w = {}
 val = {}
 correct_rate = {}
 
-for i in range(n):
-    # lr
-    ## 訓練ステップ
-    # len_pos = len(train_pos_data[i])
-    # len_neg = len(train_neg_data[i])
-    # len_total = len_pos + len_neg
-    # train_data[i] = my_function.link_data(train_pos_data[i], train_neg_data[i])
-    
-    w_pos[i] = lr_train.w_initialize(train_pos_data[i])
-    w_neg[i] = lr_train.w_initialize(train_neg_data[i])
-    w[i] = w_pos[i].update(w_neg[i])
+i = 1
+w_pos = lr_train.w_initialize(train_pos_data[1])
+print(len(w_pos))
+w_neg = lr_train.w_initialize(train_neg_data[i])
+print(len(w_neg))
+print(w_neg)
+w = w_pos.update(w_neg)
+print(w)
 
-    w[i] = lr_train.update_w(train_pos_data[i], w[i], 1)
-    w[i] = lr_train.update_w(train_neg_data[i], w[i], 0)
+# for i in range(n):
+#     # lr
+#     ## 訓練ステップ
+#     # len_pos = len(train_pos_data[i])
+#     # len_neg = len(train_neg_data[i])
+#     # len_total = len_pos + len_neg
+#     # train_data[i] = my_function.link_data(train_pos_data[i], train_neg_data[i])
+    
+#     w_pos[i] = lr_train.w_initialize(train_pos_data[i])
+#     w_neg[i] = lr_train.w_initialize(train_neg_data[i])
+#     w[i] = w_pos[i].update(w_neg[i])
+
+#     w[i] = lr_train.update_w(train_pos_data[i], w[i], 1)
+#     w[i] = lr_train.update_w(train_neg_data[i], w[i], 0)
 
    
 
-    ## 分類フェーズ
-    val[i] = lr_classification.decide_class(test_data[i], w[i])
-    count = 0
-    for k in range(len(split_pos[i])):
-        if val[i][k+1] == 'pos':
-            count += 1
-    for l in range(len(split_pos[i]), len(test_data[i])):
-        if val[i][l+1] == 'neg':
-            count += 1
-    correct_rate[i] = count / len(test_data[i])
+#     ## 分類フェーズ
+#     val[i] = lr_classification.decide_class(test_data[i], w[i])
+#     count = 0
+#     for k in range(len(split_pos[i])):
+#         if val[i][k+1] == 'pos':
+#             count += 1
+#     for l in range(len(split_pos[i]), len(test_data[i])):
+#         if val[i][l+1] == 'neg':
+#             count += 1
+#     correct_rate[i] = count / len(test_data[i])
 
-print("")
-print("Results")
-for i in range(n):
-    print(i+1 , ":",  correct_rate[i])
-
-# 4. さいごに，評価値の平均値を計算する.
 # print("")
-print("Average")
-sum = 0
-for i in range(n):
-    sum = correct_rate[i] + sum
-average = sum / 5
-print(average)
-print("")
+# print("Results")
+# for i in range(n):
+#     print(i+1 , ":",  correct_rate[i])
+
+# # 4. さいごに，評価値の平均値を計算する.
+# # print("")
+# print("Average")
+# sum = 0
+# for i in range(n):
+#     sum = correct_rate[i] + sum
+# average = sum / 5
+# print(average)
+# print("")

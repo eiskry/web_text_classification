@@ -17,7 +17,7 @@ def w＿initialize(data):
     w = {}
     for id in data.keys():
         for val in data[id].keys():
-            w[val] = 1
+                w[val] = 1
     return w
 
 # ----- ----- ----- # 
