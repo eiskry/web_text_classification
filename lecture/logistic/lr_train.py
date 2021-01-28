@@ -1,4 +1,5 @@
 import ast
+import math
 import my_function
 
 ##### 訓練ステップ
@@ -20,10 +21,18 @@ def w＿initialize(data):
     return w
 
 # ----- ----- ----- # 
+# ロジスティックシグモイド関数
+def logi_sig(a):
+    value = 1 / (1+(math.exp(-a)))
+    return value 
+
+# ----- ----- ----- # 
 # 正則化項月ロジスティック回帰の更新し値を使って重みを更新
 # 重みに変化がなければ終了
 # c = 1 or 0
 def update_w(data, w, c):
+    tmp = 0
+    val = 0
     for i in range(maxit):
         for id in data.keys():
             tmp = logi_sig(data[id] * w[id])
@@ -33,8 +42,3 @@ def update_w(data, w, c):
             w[id] = (1-lam*rho) - val
     return w
 
-# ----- ----- ----- # 
-# ロジスティックシグモイド関数
-def logi_sig(a):
-    value = 1 / (1+(math.exp(-a)))
-    return value 
