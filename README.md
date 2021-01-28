@@ -1,5 +1,12 @@
-# web_text_classficaton
-Web文書分類　Python
+# Web Text Classifficaton
+Web文書分類　
+
+### Language
+- Python
+- Ruby
+
+### Topics
+
 - 特徴抽出
   - 分類
   - knn
