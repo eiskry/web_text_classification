@@ -93,7 +93,6 @@ print(test_data[0])
 #     w[i] = lr_train.update_w(train_pos_data[i], w[i], 1)
 #     w[i] = lr_train.update_w(train_neg_data[i], w[i], 0)
 
-   
 
 #     ## 分類フェーズ
 #     val[i] = lr_classification.decide_class(test_data[i], w[i])
