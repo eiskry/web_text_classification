@@ -56,21 +56,34 @@ w_pos = lr_train.w_initialize(train_pos_data[1])
 print(len(w_pos))
 w_neg = lr_train.w_initialize(train_neg_data[i])
 print(len(w_neg))
-print(w_neg)
-w = w_pos.update(w_neg)
-print(w)
+# print(w_neg)
+w_pos.update(w_neg)
+print(len(w_pos))
+w = w_pos
 
+# print(train_pos_data[1][1])
+
+rho = 0.5
+c = 1
+lam = 0.5
+for val in train_pos_data[1][1].keys():
+    tmp = lr_train.logi_sig(train_pos_data[1][1][val] * w[val])
+    # print(tmp)
+    r = rho * (tmp - c) * train_pos_data[1][1][val]
+    print((1-lam*rho) * w[val]- r)
+
+
+w = lr_train.update_w(train_pos_data[i], w, 1)
+# print(w)
+print(len(train_pos_data[1]))
 # for i in range(n):
 #     # lr
 #     ## 訓練ステップ
-#     # len_pos = len(train_pos_data[i])
-#     # len_neg = len(train_neg_data[i])
-#     # len_total = len_pos + len_neg
-#     # train_data[i] = my_function.link_data(train_pos_data[i], train_neg_data[i])
     
 #     w_pos[i] = lr_train.w_initialize(train_pos_data[i])
 #     w_neg[i] = lr_train.w_initialize(train_neg_data[i])
-#     w[i] = w_pos[i].update(w_neg[i])
+#     w_pos[i].update(w_neg[i])
+#     w[i] =  w_pos[i]
 
 #     w[i] = lr_train.update_w(train_pos_data[i], w[i], 1)
 #     w[i] = lr_train.update_w(train_neg_data[i], w[i], 0)

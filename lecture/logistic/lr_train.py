@@ -6,10 +6,10 @@ import my_function
 ##### 正則化項付きロジスティック回帰の更新
 
 # hyper parameter
-rho = 1
-lam = 1
+rho = 0.5
+lam = 0.5
 maxit = 2000
-tol = 0.1 
+tol = 1e-05
 
 # ----- ----- ----- # 
 # 重みベクトルwを適当(全て1)に初期化する
@@ -17,7 +17,7 @@ def w＿initialize(data):
     w = {}
     for id in data.keys():
         for val in data[id].keys():
-                w[val] = 1
+                w[val] = 0.5
     return w
 
 # ----- ----- ----- # 
@@ -32,13 +32,14 @@ def logi_sig(a):
 # c = 1 or 0
 def update_w(data, w, c):
     tmp = 0
-    val = 0
+    r = 0
     for i in range(maxit):
         for id in data.keys():
-            tmp = logi_sig(data[id] * w[id])
-            val = rho * (tmp - c) * data[id]
-            if val < tol:
-                break
-            w[id] = (1-lam*rho) - val
+            for val in data[id].keys():
+                tmp = logi_sig(data[id][val] * w[val])
+                r = rho * (tmp - c) * data[id][val]
+                if r < tol:
+                    break
+                w[val] = (1-lam*rho) * w[val]- r
     return w
 

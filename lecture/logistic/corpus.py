@@ -59,7 +59,8 @@ for i in range(n):
     
     w_pos[i] = lr_train.w_initialize(train_pos_data[i])
     w_neg[i] = lr_train.w_initialize(train_neg_data[i])
-    w[i] = w_pos[i].update(w_neg[i])
+    w_pos[i].update(w_neg[i])
+    w[i] = w_pos[i]
 
     w[i] = lr_train.update_w(train_pos_data[i], w[i], 1)
     w[i] = lr_train.update_w(train_neg_data[i], w[i], 0)
