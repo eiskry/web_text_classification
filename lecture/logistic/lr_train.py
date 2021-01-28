@@ -25,7 +25,7 @@ def w＿initialize(data):
 # c = 1 or 0
 def update_w(data, w, c):
     for i in range(maxit):
-        for id in w.keys():
+        for id in data.keys():
             tmp = logi_sig(data[id] * w[id])
             val = rho * (tmp - c) * data[id]
             if val < tol:

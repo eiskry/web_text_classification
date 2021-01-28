@@ -54,28 +54,19 @@ for i in range(n):
     len_pos = len(train_pos_data[i])
     len_neg = len(train_neg_data[i])
     len_total = len_pos + len_neg
+    train_data[i] = my_function.link_data(train_pos_data[i], train_neg_data[i])
 
     for j in range(len_total):
         c = 1 if j <= len_pos else c = 0
         w_pos[i] = lr_train.w_initialize(train_pos_data[i])
         w_neg[i] = lr_train.w_initialize(train_neg_data[i])
-        w[i] = my_function.link_data(w_pos[i], w_neg[i])
+        w[i] = w_pos[i].updata(w_neg[i])
+        w[i] = lr_train.update_w(train_data[i], w[i], c)
 
-        
-    ### pos データについて
-    w_pos[i] = lr_train.w_initialize(train_pos_data[i])
-    w_pos[i] = lr_train.updata_w(train_pos_data[i], w_pos[i], 1)
-
-    ### neg　データについて
-    pwj_neg[i] = nv_train.train_count_pwj(train_neg_data[0])
-    all_words_neg_class[i] = nv_train.train_count_word(pwj_neg[i])
-    pwj_neg[i] = nv_train.train_pwj_class(pwj_neg[i], all_words_neg_class[i])
+   
 
     ## 分類フェーズ
-    # nwjx[i] = test_data[i]
-    pwj_pos[i] = nv_classification.pwj_class(test_data[i], pwj_pos[i], all_words_pos_class[i])
-    pwj_neg[i] = nv_classification.pwj_class(test_data[i], pwj_neg[i], all_words_neg_class[i])
-    val[i] = nv_classification.decide_class(test_data[i], pwj_pos[i], pwj_neg[i])
+    val[i] = lr_classification.decide_class(test_data[i], w[i])
     count = 0
     for k in range(len(split_pos[i])):
         if val[i][k+1] == 'pos':

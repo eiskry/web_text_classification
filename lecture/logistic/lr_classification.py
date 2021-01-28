@@ -12,7 +12,10 @@ def decide_class(test_data, w):
     for id in test_data.keys():
         val_class = 0
         for val in test_data[id].keys():
-            tmp = test_data[id][val]* w[val]
+            if (val not in w):
+                tmp = 0
+            else:
+                tmp = test_data[id][val]* w[val]
             val_class = val_class + tmp
         output_class_ = 'pos' if val_class >= 0.5 else 'neg'
         output_class[tid] = output_class_
