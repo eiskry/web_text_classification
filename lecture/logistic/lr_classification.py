@@ -17,6 +17,7 @@ def decide_class(test_data, w):
             else:
                 tmp = test_data[id][val]* w[val]
             val_class = val_class + tmp
+        val_class = my_function.logi_sig(val_class)
         output_class_ = 'pos' if val_class >= 0.5 else 'neg'
         output_class[tid] = output_class_
         tid += 1

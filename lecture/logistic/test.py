@@ -63,19 +63,24 @@ w = w_pos
 
 # print(train_pos_data[1][1])
 
-rho = 0.5
-c = 1
-lam = 0.5
-for val in train_pos_data[1][1].keys():
-    tmp = lr_train.logi_sig(train_pos_data[1][1][val] * w[val])
-    # print(tmp)
-    r = rho * (tmp - c) * train_pos_data[1][1][val]
-    print((1-lam*rho) * w[val]- r)
+# rho = 0.5
+# c = 1
+# lam = 0.5
+# for val in train_pos_data[1][1].keys():
+#     tmp = lr_train.logi_sig(train_pos_data[1][1][val] * w[val])
+#     # print(tmp)
+#     r = rho * (tmp - c) * train_pos_data[1][1][val]
+#     print((1-lam*rho) * w[val]- r)
+#     w[val] = (1-lam*rho) * w[val]- r
 
 
 w = lr_train.update_w(train_pos_data[i], w, 1)
-# print(w)
-print(len(train_pos_data[1]))
+w = lr_train.update_w(train_neg_data[i], w, 0)
+
+print(test_data[0])
+# print(len(train_pos_data[1]))
+
+
 # for i in range(n):
 #     # lr
 #     ## 訓練ステップ

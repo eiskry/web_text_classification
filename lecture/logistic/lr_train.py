@@ -20,11 +20,7 @@ def w＿initialize(data):
                 w[val] = 0.5
     return w
 
-# ----- ----- ----- # 
-# ロジスティックシグモイド関数
-def logi_sig(a):
-    value = 1 / (1+(math.exp(-a)))
-    return value 
+
 
 # ----- ----- ----- # 
 # 正則化項月ロジスティック回帰の更新し値を使って重みを更新
@@ -36,10 +32,11 @@ def update_w(data, w, c):
     for i in range(maxit):
         for id in data.keys():
             for val in data[id].keys():
-                tmp = logi_sig(data[id][val] * w[val])
+                tmp = my_function.logi_sig(data[id][val] * w[val])
                 r = rho * (tmp - c) * data[id][val]
+                w[val] = (1-lam*rho) * w[val]- r
                 if r < tol:
                     break
-                w[val] = (1-lam*rho) * w[val]- r
+                
     return w
 

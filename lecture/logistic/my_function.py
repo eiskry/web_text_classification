@@ -1,4 +1,5 @@
 import ast
+import math
 
 num_split = 5
 
@@ -77,3 +78,9 @@ def rec_num(n):
         return n + num_split
     else:
         return n
+
+# ----- ----- ----- ----- ----- # 
+# ロジスティックシグモイド関数
+def logi_sig(a):
+    value = 1 / (1+(math.exp(-a)))
+    return value 
