@@ -58,7 +58,7 @@ for i in range(n):
     pwj_pos[i] = nv_train.train_pwj_class(pwj_pos[i], all_words_pos_class[i])
 
     ### neg　データについて
-    pwj_neg[i] = nv_train.train_count_pwj(train_neg_data[0])
+    pwj_neg[i] = nv_train.train_count_pwj(train_neg_data[i])
     all_words_neg_class[i] = nv_train.train_count_word(pwj_neg[i])
     pwj_neg[i] = nv_train.train_pwj_class(pwj_neg[i], all_words_neg_class[i])
 

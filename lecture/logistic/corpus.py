@@ -1,6 +1,6 @@
 import my_function
-import nv_train
-import nv_classification
+import lr_train
+import lr_classification
 
 # ----- ----- ----- ----- ----- # 1
 # データセットを n 個のブロックに分割する.
@@ -43,19 +43,28 @@ for i in range(n):
 
 # ----- ----- ----- ----- ----- # 3
 # 3. 評価データに採用するブロックを変化させながら，学習&評価を n 回繰り返す. 
-pwj_pos = {}
-pwj_neg = {}
-all_words_pos_class = {}
-all_words_neg_class = {}
+w_pos = {}
+w_neg = {}
 val = {}
 correct_rate = {}
+
 for i in range(n):
-    # nv
+    # lr
     ## 訓練ステップ
+    len_pos = len(train_pos_data[i])
+    len_neg = len(train_neg_data[i])
+    len_total = len_pos + len_neg
+
+    for j in range(len_total):
+        c = 1 if j <= len_pos else c = 0
+        w_pos[i] = lr_train.w_initialize(train_pos_data[i])
+        w_neg[i] = lr_train.w_initialize(train_neg_data[i])
+        w[i] = my_function.link_data(w_pos[i], w_neg[i])
+
+        
     ### pos データについて
-    pwj_pos[i] = nv_train.train_count_pwj(train_pos_data[i])
-    all_words_pos_class[i] = nv_train.train_count_word(pwj_pos[i])
-    pwj_pos[i] = nv_train.train_pwj_class(pwj_pos[i], all_words_pos_class[i])
+    w_pos[i] = lr_train.w_initialize(train_pos_data[i])
+    w_pos[i] = lr_train.updata_w(train_pos_data[i], w_pos[i], 1)
 
     ### neg　データについて
     pwj_neg[i] = nv_train.train_count_pwj(train_neg_data[0])
