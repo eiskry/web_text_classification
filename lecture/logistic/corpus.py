@@ -51,12 +51,8 @@ correct_rate = {}
 
 for i in range(n):
     # lr
-    ## 訓練ステップ
-    # len_pos = len(train_pos_data[i])
-    # len_neg = len(train_neg_data[i])
-    # len_total = len_pos + len_neg
-    # train_data[i] = my_function.link_data(train_pos_data[i], train_neg_data[i])
-    
+    ## 訓練ステップ    
+    # 重みベクトルwを初期化する
     w_pos[i] = lr_train.w_initialize(train_pos_data[i])
     w_neg[i] = lr_train.w_initialize(train_neg_data[i])
     w_pos[i].update(w_neg[i])
