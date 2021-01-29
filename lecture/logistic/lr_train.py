@@ -60,6 +60,13 @@ def upedata_w_t(data_t, w, c):
         w[val] = (1 - lam * rho) * w[val] - r * data[val]
     return w
 
+def update_w(data, w, c):
+    w_ = {}
+    for id in data.keys():
+        w_ = upedata_w_t(data[id], w, c)
+        update_w(data, w_, c)
+    return w_
+
 # 重みの計算
 # def calc_r(data, w, c):
 #     for id in data.keys():
@@ -70,11 +77,6 @@ def upedata_w_t(data_t, w, c):
 #         r = rho * (tmp - c)
 #     return r
 
-def update_w(data, w, c):
-    w_ = {}
-    for id in data.keys():
-        w_ = upedata_w_t(data[id], w, c)
-        update_w(data, w_, c)
 
     # for id in data.keys():
     #     tmp = 0
@@ -94,4 +96,3 @@ def update_w(data, w, c):
     #             break
     #         # w[val] =  w[val] - r * data[id][val]
     #         w[val] = (1 - lam * rho) * w[val] - r * data[id][val]
-    return w
