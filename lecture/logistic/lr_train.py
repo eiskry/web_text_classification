@@ -6,8 +6,8 @@ import my_function
 ##### 正則化項付きロジスティック回帰の更新
 
 # hyper parameter
-rho = 0.01
-lam = 100
+rho = 0.1
+lam = 10
 maxit = 100
 tol = 1e-05
 
@@ -68,6 +68,7 @@ def update_w_t(data_t, w, c):
             continue
         # print((1 - lam * rho) * w[val] - r * data_t[val])
         # w[val] = (1 - lam * rho) * w[val] - r * data_t[val]
+        # w_[val] = w[val] - r * data_t[val]
         w_[val] = (1 - lam * rho) * w[val] - r * data_t[val]
     return w_
 

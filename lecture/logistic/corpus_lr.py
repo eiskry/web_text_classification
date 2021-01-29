@@ -60,13 +60,13 @@ for i in range(n):
     # w[i] = w_pos[i]
 
     # 重みベクトルwを更新する
-    for j in range(200):
+    for j in range(100):
         for id in train_pos_data[i].keys():
             w_t_pos[i] = {}
             w_t_pos[i] = lr_train.update_w_t(train_pos_data[i][id], w_pos[i], 1)
             w_pos[i] = lr_train.update_w(w_pos[i], w_t_pos[i])
     
-    for j in range(200):
+    for j in range(100):
         for id in train_neg_data[i].keys():
             w_t_neg[i] = {}
             w_t_neg[i] = lr_train.update_w_t(train_neg_data[i][id], w_neg[i], 1)
