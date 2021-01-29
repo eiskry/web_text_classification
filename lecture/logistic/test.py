@@ -54,36 +54,68 @@ val = {}
 correct_rate = {}
 
 i = 1
-w_pos = lr_train.w_initialize(train_pos_data[1])
-print(train_pos_data[1][1])
-print(len(train_pos_data[1]))
-print(len(w_pos))
-w_neg = lr_train.w_initialize(train_neg_data[1])
-print(len(train_neg_data[1]))
-print(len(w_neg))
+# w_pos = lr_train.w_initialize(train_pos_data[1])
+# print(train_pos_data[1][1])
+# print(len(train_pos_data[1]))
+# print(len(w_pos))
+# w_neg = lr_train.w_initialize(train_neg_data[1])
+# print(len(train_neg_data[1]))
+# print(len(w_neg))
 
 
 
  ## 訓練ステップ    
     # 重みベクトルwを初期化する
-w_pos[i] = lr_train.w_initialize(train_pos_data[i])
-w_neg[i] = lr_train.w_initialize(train_neg_data[i])
+w_pos = lr_train.w_initialize(train_pos_data[i])
+w_neg = lr_train.w_initialize(train_neg_data[i])
 # w_pos[i].update(w_neg[i])
 # w[i] = w_pos[i]
 
 
 # 重みベクトルwを更新する
 # w_pos_[i] = lr_train.update_w(train_pos_data[i], w_pos[i], 1)
-w_pos_ = lr_train.update_w_t(train_pos_data[i][2], w_pos[i], 1)
-print(train_pos_data[i][2])
-print(w_pos_)
-# w_neg[i] = lr_train.update_w(train_neg_data[i], w_neg[i], 0)
-# print(w_neg[i])
+# print(train_pos_data[i][1])
+# w_pos = lr_train.update_w_t(train_pos_data[i][1], w_pos, 1)
+# print(w_pos)
+# print(train_pos_data[i][2])
+# w_pos = lr_train.update_w_t(train_pos_data[i][2], w_pos, 1)
+# print(w_pos)
+
+# w_t_pos = lr_train.update_w_t(train_pos_data[i][3], w_pos, 1)
+# w_pos = lr_train.update_w(w_pos, w_t_pos)
+
+# print(w_pos)
+# print(train_pos_data[i][3])
+# w_pos = lr_train.update_w_t(train_pos_data[i][4], w_pos, 1)
+# print(w_pos)
+# print(train_pos_data[i][4])
+# w_pos___ = lr_train.update_w_t(train_pos_data[i][3], w_pos__, 1)
+# # print(w_pos)
+# w_pos____ = lr_train.update_w_t(train_pos_data[i][4], w_pos___, 1)
+# # print(w_pos)
+# w_pos_____ = lr_train.update_w_t(train_pos_data[i][5], w_pos____, 1)
+# print(w_pos_____)
+# print(train_pos_data[i][3])
+# for j in range(10):
+
+for id in train_pos_data[i].keys():
+    w_t_pos = {}
+    w_t_pos = lr_train.update_w_t(train_pos_data[i][id], w_pos, 1)
+    w_pos = lr_train.update_w(w_pos, w_t_pos)
+    # print(train_neg_data[i][id])
+print(w_pos)
+
+for id in train_neg_data[i].keys():
+    w_t_neg = {}
+    w_t_neg = lr_train.update_w_t(train_neg_data[i][id], w_neg, 0)
+    w_neg = lr_train.update_w(w_neg, w_t_neg)
+    # print(train_neg_data[i][id])
+# print(w_neg)
 
 
 ## 分類フェーズ
-val[i] = lr_classification.decide_class(test_data[i], w_pos[i], w_neg[i])
-count = 0
+# val[i] = lr_classification.decide_class(test_data[i], w_pos[i], w_neg[i])
+# count = 0
 
 # print(len(w_neg))
 # # print(w_neg)

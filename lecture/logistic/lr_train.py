@@ -6,7 +6,7 @@ import my_function
 ##### 正則化項付きロジスティック回帰の更新
 
 # hyper parameter
-rho = 1
+rho = 0.001
 lam = 1000
 maxit = 100
 tol = 1e-05
@@ -18,7 +18,7 @@ def w＿initialize(data):
     for id in data.keys():
         for val in data[id].keys():
             # if (val not in w):
-            w[val] = 0.1
+            w[val] = 0.00001
     return w
 
 
@@ -50,9 +50,10 @@ def w＿initialize(data):
 # 各教師データについて重みの変化を計算
 def update_w_t(data_t, w, c):
     value = 0
-    # w_ = {}
+    w_ = {}
     for val in data_t.keys():
         value = value + data_t[val] * w[val]
+    # print(value)
     logisig = my_function.logi_sig(value)
     # print(logisig)
     for val in data_t.keys():
@@ -60,17 +61,20 @@ def update_w_t(data_t, w, c):
         change = abs(r * data_t[val])
         # print(change)
         # change = logisig - c
+        # print(change)
+        # change = logisig - c
         if change < tol:
-            # w_[val] = w[val]
+            w_[val] = w[val]
             continue
-        w[val] = (1 - lam * rho) * w[val] - r * data_t[val]
-    return w
+        # print((1 - lam * rho) * w[val] - r * data_t[val])
+        # w[val] = (1 - lam * rho) * w[val] - r * data_t[val]
+        w_[val] = (1 - lam * rho) * w[val] - r * data_t[val]
+    return w_
 
-# 教師データ全体について重みを更新
-def update_w(data, w, c):
-    for i in range(maxit):
-        for id in data.keys():
-            w = update_w_t(data[id], w, c)
+# 重みを更新
+def update_w(w, w_, ):
+    for id in w_.keys():
+        w[id] = w_[id]
     return w
 
 # def update_w(data, w, c):
