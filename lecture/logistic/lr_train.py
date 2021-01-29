@@ -6,7 +6,7 @@ import my_function
 ##### 正則化項付きロジスティック回帰の更新
 
 # hyper parameter
-rho = 0.001
+rho = 0.01
 lam = 1
 maxit = 100
 tol = 1e-05
@@ -18,7 +18,7 @@ def w＿initialize(data):
     for id in data.keys():
         for val in data[id].keys():
             # if (val not in w):
-            w[val] = 0.001
+            w[val] = 1
     return w
 
 
@@ -38,21 +38,21 @@ def update_w_t(data_t, w, c):
     # print(logisig)
     for val in data_t.keys():
         r = rho * (logisig - c)
-        change = abs(r * data_t[val])
+        # change = abs(r * data_t[val])
         # print(change)
         # change = logisig - c
         # print(change)
         # change = logisig - c
-        # # if change < tol:
-        # #     w_[val] = w[val]
+        # if change < tol:
+        #     w_[val] = w[val]
         #     continue
         # print((1 - lam * rho) * w[val] - r * data_t[val])
         # w[val] = (1 - lam * rho) * w[val] - r * data_t[val]
         # w_[val] = w[val] - r * data_t[val]
         new = (1 - lam * rho) * w[val] - r * data_t[val]
-        if new < 0:
-            w_[val] = w[val]
-            continue
+        # if new < 0:
+        #     w_[val] = w[val]
+        #     continue
         w_[val] = new
     return w_
 

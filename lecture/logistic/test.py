@@ -106,14 +106,16 @@ for j in range(100):
     print(j)
     print(w_pos["ソープ"])
 # print(w_pos)
-print()
+# print()
 
-# for j in range(100):
-#     for id in train_neg_data[i].keys():
-#         w_t_neg = {}
-#         w_t_neg = lr_train.update_w_t(train_neg_data[i][id], w_neg, 0)
-#         w_neg = lr_train.update_w(w_neg, w_t_neg)
-# print(w_neg)
+for j in range(100):
+    for id in train_neg_data[i].keys():
+        w_t_neg = {}
+        w_t_neg = lr_train.update_w_t(train_neg_data[i][id], w_neg, 0)
+        w_neg = lr_train.update_w(w_neg, w_t_neg)
+    print(j)
+    print(w_neg["申し上げる"])
+# # print(w_neg)
 
 
 ## 分類フェーズ
