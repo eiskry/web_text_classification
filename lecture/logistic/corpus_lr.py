@@ -72,8 +72,7 @@ for i in range(n):
             w_t_neg[i] = lr_train.update_w_t(train_neg_data[i][id], w_neg[i], 0)
             w_neg[i] = lr_train.update_w(w_neg[i], w_t_neg[i])
 
-
-    ## 分類フェーズ
+    ## 分類ステップ
     val[i] = lr_classification.decide_class(test_data[i], w_pos[i], w_neg[i])
     count = 0
     for k in range(len(split_pos[i])):

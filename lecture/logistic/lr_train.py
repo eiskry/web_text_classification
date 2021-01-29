@@ -17,7 +17,6 @@ def w＿initialize(data):
     w = {}
     for id in data.keys():
         for val in data[id].keys():
-            # if (val not in w):
             w[val] = 1
     return w
 
@@ -26,7 +25,6 @@ def w＿initialize(data):
 # 正則化項月ロジスティック回帰の更新し値を使って重みを更新
 # 重みに変化がなければ終了
 # c = 1 or 0
-
 # 各教師データについて重みの変化を計算
 def update_w_t(data_t, w, c):
     value = 0
