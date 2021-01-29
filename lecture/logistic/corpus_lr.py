@@ -66,7 +66,7 @@ for i in range(n):
             w_t_pos[i] = lr_train.update_w_t(train_pos_data[i][id], w_pos[i], 1)
             w_pos[i] = lr_train.update_w(w_pos[i], w_t_pos[i])
     
-    for j in range(100):
+    for k in range(100):
         for id in train_neg_data[i].keys():
             w_t_neg[i] = {}
             w_t_neg[i] = lr_train.update_w_t(train_neg_data[i][id], w_neg[i], 1)
@@ -84,12 +84,14 @@ for i in range(n):
             count += 1
     correct_rate[i] = count / len(test_data[i])
 
+# ----- ----- ----- ----- ----- # 4
+# 4. 評価
 print("")
 print("Results")
 for i in range(n):
     print(i+1 , ":",  correct_rate[i])
 
-# 4. 評価値の平均値を計算する.
+# 評価値の平均値を計算する.
 print("Average")
 sum = 0
 for i in range(n):
