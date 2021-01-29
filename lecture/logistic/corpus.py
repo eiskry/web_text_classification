@@ -55,15 +55,15 @@ for i in range(n):
     # 重みベクトルwを初期化する
     w_pos[i] = lr_train.w_initialize(train_pos_data[i])
     w_neg[i] = lr_train.w_initialize(train_neg_data[i])
-    w_pos[i].update(w_neg[i])
-    w[i] = w_pos[i]
+    # w_pos[i].update(w_neg[i])
+    # w[i] = w_pos[i]
 
-    w[i] = lr_train.update_w(train_pos_data[i], w[i], 1)
-    w[i] = lr_train.update_w(train_neg_data[i], w[i], 0)
+    w_pos[i] = lr_train.update_w(train_pos_data[i], w_pos[i], 1)
+    w_neg[i] = lr_train.update_w(train_neg_data[i], w_neg[i], 0)
 
 
     ## 分類フェーズ
-    val[i] = lr_classification.decide_class(test_data[i], w[i])
+    val[i] = lr_classification.decide_class(test_data[i], w_pos[i], w_neg[i])
     count = 0
     for k in range(len(split_pos[i])):
         if val[i][k+1] == 'pos':

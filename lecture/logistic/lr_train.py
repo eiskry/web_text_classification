@@ -42,6 +42,7 @@ def update_w(data, w, c):
                 value2  = data[id][val] * r
                 if value2 < tol:
                     break
-                w[val] = (1 - lam * rho) * w[val] - r * data[id][val]
+                w[val] =  w[val] - r * data[id][val]
+                # w[val] = (1 - lam * rho) * w[val] - r * data[id][val]
     return w
 
