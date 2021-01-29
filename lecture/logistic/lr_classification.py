@@ -33,7 +33,7 @@ def decide_class(test_data, w_pos, w_neg):
             if (val not in w_pos):
                 tmp = 0
             else:
-                tmp = test_data[id][val]* w_pos[val]
+                tmp = test_data[id][val] * w_pos[val]
             val_class_pos = val_class_pos + tmp
         # neg識別
         val_class_neg = 0
@@ -41,9 +41,9 @@ def decide_class(test_data, w_pos, w_neg):
             if (val not in w_neg):
                 tmp = 0
             else:
-                tmp = test_data[id][val]* w_neg[val]
+                tmp = test_data[id][val] * w_neg[val]
             val_class_neg = val_class_neg + tmp
-        val_class_ = my_function.logi_sig(val_class_pos) + my_function.logi_sig(val_class_neg)
+        val_class_ = my_function.logi_sig(val_class_pos) - my_function.logi_sig(val_class_neg)
         output_class_ = 'pos' if val_class_ >= 0.5 else 'neg'
         output_class[tid] = output_class_
         tid += 1

@@ -7,9 +7,9 @@ import my_function
 
 # hyper parameter
 rho = 10
-lam = 100
-maxit = 2000
-tol = 1e-03
+lam = 1000
+maxit = 4000
+tol = 1e-05
 
 # ----- ----- ----- # 
 # 重みベクトルwを適当(全て1)に初期化する
@@ -17,7 +17,8 @@ def w＿initialize(data):
     w = {}
     for id in data.keys():
         for val in data[id].keys():
-                w[val] = 1
+            # if (val not in w):
+            w[val] = 1
     return w
 
 
@@ -42,7 +43,7 @@ def update_w(data, w, c):
                 value2  = data[id][val] * r
                 if value2 < tol:
                     break
-                w[val] =  w[val] - r * data[id][val]
-                # w[val] = (1 - lam * rho) * w[val] - r * data[id][val]
+                # w[val] =  w[val] - r * data[id][val]
+                w[val] = (1 - lam * rho) * w[val] - r * data[id][val]
     return w
 

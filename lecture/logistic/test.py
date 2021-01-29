@@ -53,13 +53,18 @@ correct_rate = {}
 
 i = 1
 w_pos = lr_train.w_initialize(train_pos_data[1])
+print(train_pos_data[1][1])
+print(len(train_pos_data[1]))
 print(len(w_pos))
-w_neg = lr_train.w_initialize(train_neg_data[i])
+w_neg = lr_train.w_initialize(train_neg_data[1])
+print(len(train_neg_data[1]))
 print(len(w_neg))
-# print(w_neg)
-w_pos.update(w_neg)
-print(len(w_pos))
-w = w_pos
+
+# print(len(w_neg))
+# # print(w_neg)
+# w_pos.update(w_neg)
+# print(len(w_pos))
+# w = w_pos
 
 # print(train_pos_data[1][1])
 
@@ -74,10 +79,10 @@ w = w_pos
 #     w[val] = (1-lam*rho) * w[val]- r
 
 
-w = lr_train.update_w(train_pos_data[i], w, 1)
-w = lr_train.update_w(train_neg_data[i], w, 0)
+# w = lr_train.update_w(train_pos_data[i], w, 1)
+# w = lr_train.update_w(train_neg_data[i], w, 0)
 
-print(test_data[0])
+# print(test_data[0])
 # print(len(train_pos_data[1]))
 
 

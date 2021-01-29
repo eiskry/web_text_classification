@@ -58,6 +58,7 @@ for i in range(n):
     # w_pos[i].update(w_neg[i])
     # w[i] = w_pos[i]
 
+    # 重みベクトルwを更新する
     w_pos[i] = lr_train.update_w(train_pos_data[i], w_pos[i], 1)
     w_neg[i] = lr_train.update_w(train_neg_data[i], w_neg[i], 0)
 
