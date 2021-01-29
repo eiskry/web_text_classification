@@ -73,7 +73,7 @@ def update_w_t(data_t, w, c):
     return w_
 
 # 重みを更新
-def update_w(w, w_, ):
+def update_w(w, w_):
     for id in w_.keys():
         w[id] = w_[id]
     return w

@@ -111,12 +111,12 @@ for j in range(100):
         w_t_neg = {}
         w_t_neg = lr_train.update_w_t(train_neg_data[i][id], w_neg, 0)
         w_neg = lr_train.update_w(w_neg, w_t_neg)
-print(w_neg)
+# print(w_neg)
 
 
 ## 分類フェーズ
-val[i] = lr_classification.decide_class(test_data[i], w_pos, w_neg)
-print(val[i])
+# val[i] = lr_classification.decide_class(test_data[i], w_pos, w_neg)
+# print(val[i])
 # count = 0
 
 # print(len(w_neg))
