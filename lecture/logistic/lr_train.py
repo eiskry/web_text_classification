@@ -6,7 +6,7 @@ import my_function
 ##### 正則化項付きロジスティック回帰の更新
 
 # hyper parameter
-rho = 0.01
+rho = 0.001
 lam = 1
 maxit = 100
 tol = 1e-05
@@ -17,7 +17,7 @@ def w_initialize(data):
     w = {}
     for id in data.keys():
         for val in data[id].keys():
-            w[val] = 1
+            w[val] = 0.1
     return w
 
 
