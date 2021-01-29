@@ -6,8 +6,8 @@ import my_function
 ##### 正則化項付きロジスティック回帰の更新
 
 # hyper parameter
-rho = 0.001
-lam = 1000
+rho = 0.01
+lam = 100
 maxit = 100
 tol = 1e-05
 

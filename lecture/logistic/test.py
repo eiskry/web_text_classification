@@ -98,23 +98,25 @@ w_neg = lr_train.w_initialize(train_neg_data[i])
 # print(train_pos_data[i][3])
 # for j in range(10):
 
-for id in train_pos_data[i].keys():
-    w_t_pos = {}
-    w_t_pos = lr_train.update_w_t(train_pos_data[i][id], w_pos, 1)
-    w_pos = lr_train.update_w(w_pos, w_t_pos)
-    # print(train_neg_data[i][id])
-print(w_pos)
+for j in range(200):
+    for id in train_pos_data[i].keys():
+        w_t_pos = {}
+        w_t_pos = lr_train.update_w_t(train_pos_data[i][id], w_pos, 1)
+        w_pos = lr_train.update_w(w_pos, w_t_pos)
+        # print(train_neg_data[i][id])
 
-for id in train_neg_data[i].keys():
-    w_t_neg = {}
-    w_t_neg = lr_train.update_w_t(train_neg_data[i][id], w_neg, 0)
-    w_neg = lr_train.update_w(w_neg, w_t_neg)
-    # print(train_neg_data[i][id])
+for j in range(200):
+    for id in train_neg_data[i].keys():
+        w_t_neg = {}
+        w_t_neg = lr_train.update_w_t(train_neg_data[i][id], w_neg, 0)
+        w_neg = lr_train.update_w(w_neg, w_t_neg)
+        # print(train_neg_data[i][id])
 # print(w_neg)
 
 
 ## 分類フェーズ
-# val[i] = lr_classification.decide_class(test_data[i], w_pos[i], w_neg[i])
+val[i] = lr_classification.decide_class(test_data[i], w_pos, w_neg)
+# print(val[i])
 # count = 0
 
 # print(len(w_neg))

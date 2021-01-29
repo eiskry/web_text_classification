@@ -45,8 +45,8 @@ for i in range(n):
 # 3. 評価データに採用するブロックを変化させながら，学習&評価を n 回繰り返す. 
 w_pos = {}
 w_neg = {}
-w_pos_ = {}
-w_neg_ = {}
+w_t_pos = {}
+w_t_neg = {}
 val = {}
 correct_rate = {}
 
@@ -60,17 +60,21 @@ for i in range(n):
     # w[i] = w_pos[i]
 
     # 重みベクトルwを更新する
-    for j in range(maxit):
+    for j in range(200):
         for id in train_pos_data[i].keys():
-            w_pos[i] = update_w_t(train_pos_data[i][id]], w_pos[i], c)
-            w = w_
+            w_t_pos[i] = {}
+            w_t_pos[i] = lr_train.update_w_t(train_pos_data[i][id], w_pos[i], 1)
+            w_pos[i] = lr_train.update_w(w_pos[i], w_t_pos[i])
     
-    w_pos_[i] = lr_train.update_w(train_pos_data[i], w_pos[i], 1)
-    w_neg_[i] = lr_train.update_w(train_neg_data[i], w_neg[i], 0)
+    for j in range(200):
+        for id in train_neg_data[i].keys():
+            w_t_neg[i] = {}
+            w_t_neg[i] = lr_train.update_w_t(train_neg_data[i][id], w_neg[i], 1)
+            w_neg[i] = lr_train.update_w(w_neg[i], w_t_neg[i])
 
 
     ## 分類フェーズ
-    val[i] = lr_classification.decide_class(test_data[i], w_pos_[i], w_neg_[i])
+    val[i] = lr_classification.decide_class(test_data[i], w_pos[i], w_neg[i])
     count = 0
     for k in range(len(split_pos[i])):
         if val[i][k+1] == 'pos':
