@@ -74,12 +74,13 @@ for i in range(n):
 
     ## 分類ステップ
     val[i] = lr_classification.decide_class(test_data[i], w_pos[i], w_neg[i])
+
     count = 0
-    for k in range(len(split_pos[i])):
-        if val[i][k+1] == 'pos':
+    for l in range(len(split_pos[i])):
+        if val[i][l+1] == 'pos':
             count += 1
-    for l in range(len(split_pos[i]), len(test_data[i])):
-        if val[i][l+1] == 'neg':
+    for m in range(len(split_pos[i]), len(test_data[i])):
+        if val[i][m+1] == 'neg':
             count += 1
     correct_rate[i] = count / len(test_data[i])
 

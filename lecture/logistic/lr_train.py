@@ -38,9 +38,9 @@ def update_w_t(data_t, w, c):
         r = rho * (logisig - c)
         change = abs(r * data_t[val])
         # print(change)
-        if change < tol:
-            w_[val] = w[val]
-            continue
+        # if change < tol:
+        #     w_[val] = w[val]
+        #     continue
         # print((1 - lam * rho) * w[val] - r * data_t[val])
         # w[val] = (1 - lam * rho) * w[val] - r * data_t[val]
         # w_[val] = w[val] - r * data_t[val]
