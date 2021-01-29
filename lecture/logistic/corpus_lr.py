@@ -4,7 +4,7 @@ import lr_classification
 
 # ----- ----- ----- ----- ----- # 1
 # データセットを n 個のブロックに分割する.
-n=5
+n = 5
 
 # positive_tf
 text = open("positive_tf.txt", "r")

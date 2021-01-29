@@ -27,6 +27,7 @@ def decide_class(test_data, w_pos, w_neg):
     output_class = {}
     tid = 1
     for id in test_data.keys():
+        # それぞれの文書に対して
         # pos識別
         val_class_pos = 0
         for val in test_data[id].keys():
