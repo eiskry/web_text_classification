@@ -45,7 +45,6 @@ for i in range(n):
 # 3. 評価データに採用するブロックを変化させながら，学習&評価を n 回繰り返す. 
 w_pos = {}
 w_neg = {}
-w = {}
 val = {}
 correct_rate = {}
 

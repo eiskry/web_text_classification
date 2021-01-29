@@ -86,21 +86,21 @@ def rec_num(n):
 #     return value 
 
 import numpy
-def logi_sig(x):
-    if x >= 0:
-        return 1.0 / (1.0 + numpy.exp(-x))
-    e = numpy.exp(x)
-    return e / (e + 1.0)
+# def logi_sig(x):
+#     if x >= 0:
+#         return 1.0 / (1.0 + numpy.exp(-x))
+#     e = numpy.exp(x)
+#     return e / (e + 1.0)
 
 # def logi_sig(x):
 #      return 0.0 if x<-709 else 1/(1+numpy.exp(-x))
 
-# def logi_sig(x):
-#     sigmoid_range = 34.538776394910684
+def logi_sig(x):
+    sigmoid_range = 34.538776394910684
 
-#     if x <= -sigmoid_range:
-#         return 1e-15
-#     if x >= sigmoid_range:
-#         return 1.0 - 1e-15
+    if x <= -sigmoid_range:
+        return 1e-15
+    if x >= sigmoid_range:
+        return 1.0 - 1e-15
 
-#     return 1.0 / (1.0 + numpy.exp(-x))
+    return 1.0 / (1.0 + numpy.exp(-x))
