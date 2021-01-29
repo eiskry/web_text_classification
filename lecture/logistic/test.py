@@ -47,6 +47,8 @@ for i in range(n):
 # 3. 評価データに採用するブロックを変化させながら，学習&評価を n 回繰り返す. 
 w_pos = {}
 w_neg = {}
+w_pos_ = {}
+w_neg_ = {}
 w = {}
 val = {}
 correct_rate = {}
@@ -71,10 +73,12 @@ w_neg[i] = lr_train.w_initialize(train_neg_data[i])
 
 
 # 重みベクトルwを更新する
-w_pos[i] = lr_train.update_w(train_pos_data[i], w_pos[i], 1)
-print(w_pos[i])
-w_neg[i] = lr_train.update_w(train_neg_data[i], w_neg[i], 0)
-print(w_neg[i])
+# w_pos_[i] = lr_train.update_w(train_pos_data[i], w_pos[i], 1)
+w_pos_ = lr_train.update_w_t(train_pos_data[i][2], w_pos[i], 1)
+print(train_pos_data[i][2])
+print(w_pos_)
+# w_neg[i] = lr_train.update_w(train_neg_data[i], w_neg[i], 0)
+# print(w_neg[i])
 
 
 ## 分類フェーズ

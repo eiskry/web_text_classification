@@ -8,7 +8,7 @@ import my_function
 # hyper parameter
 rho = 1
 lam = 1000
-maxit = 2000
+maxit = 100
 tol = 1e-05
 
 # ----- ----- ----- # 
@@ -48,16 +48,21 @@ def w＿initialize(data):
 #     return w
 
 # 各教師データについて重みの変化を計算
-def updata_w_t(data_t, w, c):
+def update_w_t(data_t, w, c):
     value = 0
+    # w_ = {}
     for val in data_t.keys():
         value = value + data_t[val] * w[val]
     logisig = my_function.logi_sig(value)
+    # print(logisig)
     for val in data_t.keys():
         r = rho * (logisig - c)
-        change = r * data_t[val]
+        change = abs(r * data_t[val])
+        # print(change)
+        # change = logisig - c
         if change < tol:
-            break
+            # w_[val] = w[val]
+            continue
         w[val] = (1 - lam * rho) * w[val] - r * data_t[val]
     return w
 
@@ -65,7 +70,7 @@ def updata_w_t(data_t, w, c):
 def update_w(data, w, c):
     for i in range(maxit):
         for id in data.keys():
-            w = updata_w_t(data[id], w, c)
+            w = update_w_t(data[id], w, c)
     return w
 
 # def update_w(data, w, c):

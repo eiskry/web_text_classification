@@ -92,15 +92,15 @@ import numpy
 #     e = numpy.exp(x)
 #     return e / (e + 1.0)
 
-# def logi_sig(x):
-#      return 0.0 if x<-709 else 1/(1+numpy.exp(-x))
-
 def logi_sig(x):
-    sigmoid_range = 34.538776394910684
+     return 0.0 if x<-709 else 1/(1+numpy.exp(-x))
 
-    if x <= -sigmoid_range:
-        return 1e-15
-    if x >= sigmoid_range:
-        return 1.0 - 1e-15
+# def logi_sig(x):
+#     sigmoid_range = 34.538776394910684
 
-    return 1.0 / (1.0 + numpy.exp(-x))
+#     if x <= -sigmoid_range:
+#         return 1e-15
+#     if x >= sigmoid_range:
+#         return 1.0 - 1e-15
+
+#     return 1.0 / (1.0 + numpy.exp(-x))
