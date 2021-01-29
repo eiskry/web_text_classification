@@ -79,8 +79,7 @@ print("Results")
 for i in range(n):
     print(i+1 , ":",  correct_rate[i])
 
-# 4. さいごに，評価値の平均値を計算する.
-# print("")
+# 4. 評価値の平均値を計算する.
 print("Average")
 sum = 0
 for i in range(n):
