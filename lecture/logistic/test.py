@@ -60,6 +60,27 @@ w_neg = lr_train.w_initialize(train_neg_data[1])
 print(len(train_neg_data[1]))
 print(len(w_neg))
 
+
+
+ ## 訓練ステップ    
+    # 重みベクトルwを初期化する
+w_pos[i] = lr_train.w_initialize(train_pos_data[i])
+w_neg[i] = lr_train.w_initialize(train_neg_data[i])
+# w_pos[i].update(w_neg[i])
+# w[i] = w_pos[i]
+
+
+# 重みベクトルwを更新する
+w_pos[i] = lr_train.update_w(train_pos_data[i], w_pos[i], 1)
+print(w_pos[i])
+w_neg[i] = lr_train.update_w(train_neg_data[i], w_neg[i], 0)
+print(w_neg[i])
+
+
+## 分類フェーズ
+val[i] = lr_classification.decide_class(test_data[i], w_pos[i], w_neg[i])
+count = 0
+
 # print(len(w_neg))
 # # print(w_neg)
 # w_pos.update(w_neg)
