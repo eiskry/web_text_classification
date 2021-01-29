@@ -82,5 +82,5 @@ def rec_num(n):
 # ----- ----- ----- ----- ----- # 
 # ロジスティックシグモイド関数
 def logi_sig(a):
-    value = 1 / (1+(math.exp(-a)))
+    value = 1 / ( 1 + (math.exp(-a)))
     return value 
