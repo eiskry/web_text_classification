@@ -13,7 +13,7 @@ tol = 1e-05
 
 # ----- ----- ----- # 
 # 重みベクトルwを適当(全て1)に初期化する
-def w＿initialize(data):
+def w_initialize(data):
     w = {}
     for id in data.keys():
         for val in data[id].keys():
