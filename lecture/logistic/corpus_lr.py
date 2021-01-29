@@ -69,7 +69,7 @@ for i in range(n):
     for k in range(100):
         for id in train_neg_data[i].keys():
             w_t_neg[i] = {}
-            w_t_neg[i] = lr_train.update_w_t(train_neg_data[i][id], w_neg[i], 1)
+            w_t_neg[i] = lr_train.update_w_t(train_neg_data[i][id], w_neg[i], 0)
             w_neg[i] = lr_train.update_w(w_neg[i], w_t_neg[i])
 
 

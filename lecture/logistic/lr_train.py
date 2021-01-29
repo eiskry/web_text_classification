@@ -7,7 +7,7 @@ import my_function
 
 # hyper parameter
 rho = 0.001
-lam = 1000
+lam = 1
 maxit = 100
 tol = 1e-05
 
@@ -43,9 +43,9 @@ def update_w_t(data_t, w, c):
         # change = logisig - c
         # print(change)
         # change = logisig - c
-        if change < tol:
-            w_[val] = w[val]
-            continue
+        # # if change < tol:
+        # #     w_[val] = w[val]
+        #     continue
         # print((1 - lam * rho) * w[val] - r * data_t[val])
         # w[val] = (1 - lam * rho) * w[val] - r * data_t[val]
         # w_[val] = w[val] - r * data_t[val]
