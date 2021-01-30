@@ -8,7 +8,7 @@ import my_function
 # hyper parameter
 rho = 0.001
 lam = 1
-maxit = 100
+maxit = 500
 tol = 1e-05
 
 # ----- ----- ----- # 
