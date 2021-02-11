@@ -7,7 +7,7 @@ Web文書分類　
 
 ### Topics
 
-- tf-idf
+- 特徴抽出tf-idf
 - knn
 - ナイーブベイズ
 - 交差検定法
