@@ -7,7 +7,10 @@ Web文書分類　
 
 ### Topics
 
-- 特徴抽出tf-idf
+- 特徴抽出
+  - Binary
+  - Term Frequency
+  - TF-IDF
 - knn
 - ナイーブベイズ
 - 交差検定法
