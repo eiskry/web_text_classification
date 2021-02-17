@@ -3,7 +3,7 @@ import lr_train
 import lr_classification
 
 # ----- ----- ----- ----- ----- # 1
-# データセットを n 個のブロックに分割する.
+# データセットを n 個のブロックに分割する.
 n = 5
 
 # positive_tf
@@ -20,7 +20,7 @@ neg_data = my_function.read_tf(text)
 split_neg = my_function.make_split_data(neg_data, n)
 
 # ----- ----- ----- ----- ----- # 2
-# 2. ひとつのブロックを評価データ，のこりを学習データとする.
+# 2. ひとつのブロックを評価データ，のこりを学習データとする.
 ### 評価データの作成
 test_data = {}
 for i in range(n):
@@ -42,7 +42,7 @@ for i in range(n):
     train_neg_data[i] = my_function.link_data(tmp_neg1, tmp_neg2)
 
 # ----- ----- ----- ----- ----- # 3
-# 3. 評価データに採用するブロックを変化させながら，学習&評価を n 回繰り返す. 
+# 3. 評価データに採用するブロックを変化させながら，学習&評価を n 回繰り返す. 
 w_pos = {}
 w_neg = {}
 w_t_pos = {}
@@ -82,7 +82,7 @@ for i in range(n):
     for m in range(len(split_pos[i]), len(test_data[i])):
         if val[i][m+1] == 'neg':
             count += 1
-    correct_rate[i] = count / len(test_data[i]) +0.1
+    correct_rate[i] = count / len(test_data[i])
 
 # ----- ----- ----- ----- ----- # 4
 # 4. 評価
