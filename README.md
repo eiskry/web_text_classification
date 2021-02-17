@@ -19,7 +19,6 @@ Webを介したEコマースやSNSの発展により，商品やサービスの�
 
 ## Language
 - Python
-- Ruby
 
 ## Topics
 
