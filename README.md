@@ -1,5 +1,5 @@
-# Web Text Classifficaton
-Web文書分類　
+# Web Text Classifficaton　Web文書分類　
+
 
 ## 概要
 ### 目標
